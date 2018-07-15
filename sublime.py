@@ -140,6 +140,7 @@ keymap = {
     # 'shockoon': Key('cmd-right enter'),
     # 'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
 
+    'go line': Key("ctrl-g"),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
 }

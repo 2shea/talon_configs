@@ -12,7 +12,7 @@ alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string
 
 alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
 alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in alnum})
-alpha.update({'command shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in alnum})
+alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in alnum})
 alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in alnum})
 
 mapping = {
@@ -260,7 +260,6 @@ keymap.update({
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
 
-    'word lunixbochs': 'lunixbochs',
     'word talon': 'talon',
     'word Point2d': 'Point2d',
     'word Point3d': 'Point3d',
@@ -327,7 +326,9 @@ keymap.update({
     'next space': Key('cmd-alt-ctrl-right'),
     'last space': Key('cmd-alt-ctrl-left'),
 
-    'scroll down': [Key('down')] * 30,
-    'scroll up': [Key('up')] * 30,
+    'scroll up': Key('pgup'),
+    'scroll down': Key('pgdown'),
+
+    '(2 | two | too) shea': '2shea',
 })
 ctx.keymap(keymap)

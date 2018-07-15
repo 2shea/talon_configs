@@ -9,6 +9,8 @@ keymap = {
     'clear session': [Key('ctrl-c'), 'clear\n'],
     'split horizontal': Key('cmd-shift-d'),
     'split vertical': Key('cmd-d'),
+    'split next': Key('cmd-]'),
+    'split last': Key('cmd-['),
 }
 
 ctx.keymap(keymap)
