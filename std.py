@@ -329,6 +329,7 @@ keymap.update({
     'scroll up': Key('pgup'),
     'scroll down': Key('pgdown'),
 
+    'flock off': Key('escape'),
     '(2 | two | too) shea': '2shea',
     'menu help': Key('cmd-shift-?'),
     'spotlight': Key('cmd-space'),
