@@ -330,5 +330,7 @@ keymap.update({
     'scroll down': Key('pgdown'),
 
     '(2 | two | too) shea': '2shea',
+    'menu help': Key('cmd-shift-?'),
+    'spotlight': Key('cmd-space'),
 })
 ctx.keymap(keymap)
