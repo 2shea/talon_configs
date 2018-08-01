@@ -143,6 +143,8 @@ keymap = {
     'go line': Key("ctrl-g"),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
+    'wipe start': [Key('cmd-shift-left'), Key('backspace')],
+    'wipe end': [Key('cmd-shift-right'), Key('backspace')],
 }
 
 ctx.keymap(keymap)

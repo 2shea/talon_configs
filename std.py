@@ -119,7 +119,6 @@ keymap = {}
 keymap.update(alpha)
 keymap.update({
     'phrase <dgndictation> [over]': text,
-
     'sentence <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
@@ -333,5 +332,14 @@ keymap.update({
     '(2 | two | too) shea': '2shea',
     'menu help': Key('cmd-shift-?'),
     'spotlight': Key('cmd-space'),
+    '(undo | under | skunks)': Key('cmd-z'),
+    'redo': Key('cmd-shift-z'),
+    'twice': Rep(1),
 })
+
+keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in range(1,10)})
+keymap.update({'right wipe %s' % k: [Key('delete')] * k for k in range(1,10)})
+keymap.update({'jog right %s' % k: [Key('right')] * k for k in range(1,10)})
+keymap.update({'jog left %s' % k: [Key('left')] * k for k in range(1,10)})
+
 ctx.keymap(keymap)
