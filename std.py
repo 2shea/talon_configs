@@ -3,7 +3,7 @@ from talon import ctrl, clip
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap die each fail gone harm sit jury crash look mad near odd pit quest red sun trap urge vest whale box yes zip'.split()
+alpha_alt = 'air bat cap dip each fail gone harm sit jury crash look mad near odd pit quest red sun trap urge vest whale box yes zip'.split()
 alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
 
 alpha = {}
@@ -259,6 +259,13 @@ keymap.update({
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
 
+    '(jay son | jason )': 'json',
+    'on (deaf | dev | deft)': 'undef',
+    'die':'die',
+    '(strike | clear | scratch )': Key('cmd-backspace'),
+    'self':'self',
+    'class':'class',
+
     'word talon': 'talon',
     'word Point2d': 'Point2d',
     'word Point3d': 'Point3d',
@@ -276,6 +283,7 @@ keymap.update({
     '(minus | dash)': '-',
     'plus': '+',
     'arrow': '->',
+    'dub arrow': '=>',
     'call': '()',
     'indirect': '&',
     'dereference': '*',
