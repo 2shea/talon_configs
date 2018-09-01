@@ -108,22 +108,15 @@ def select_lines(m):
 
 keymap = {
     # 'sprinkle' + optional_numerals: jump_to_bol,
-    'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
     # 'sprinkler'
     # 'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
     'trundle': toggle_comments,
     'trundle super': Key('cmd-alt-/'),
-    'trundle' + numerals: jump_to_bol_and(toggle_comments),
-    'jolt': Key('cmd-shift-d'),
-
-    'snipline' + optional_numerals: jump_to_bol_and(snipline),
-    'snipline super': Key('ctrl-shift-k'),
+    'trundle' + numerals: jump_to_bol_and(toggle_comments), # noop for plain/text
 
     # 'snipple': [Key(atom_hotkey), Key(COMMANDS.DELETE_TO_BOL)],
     # 'snipper': [Key(atom_hotkey), Key(COMMANDS.DELETE_TO_EOL)],
-
-    'bracken': [Key('ctrl-shift-m')],
 
     'copy line' + numerals: copy_line,
     'move line' + numerals: move_line,
@@ -140,11 +133,44 @@ keymap = {
     # 'shockoon': Key('cmd-right enter'),
     # 'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
 
+    # general
+    'sidebar': [Key('cmd-k'), Key('cmd-b')],
+    'fullscreen': Key('ctrl-cmd-f'),
+
+    # file
+    '(save | safe)': Key('cmd-s'),
+    'close file': Key('cmd-w'),
+
+    # selection
+    'select line': Key('cmd-l'),
+    'select word': Key('cmd-d'),
+    'select all': Key('cmd-a'),
+    'select scope': Key('shift-cmd-'),
+
+    # edit
+    'wipe start': [Key('cmd-shift-left'), Key('backspace')],
+    'wipe end': [Key('cmd-shift-right'), Key('backspace')],
+    'snipline' + optional_numerals: jump_to_bol_and(snipline),
+    'snipline super': Key('ctrl-shift-k'),
+    'dent': Key('cmd-]'),
+    'no dent': Key('cmd-['),
+    'dup line': Key('cmd-shift-d'),
+    'bracken': [Key('ctrl-shift-m')],
+    'newline up': Key('cmd-shift-enter'),
+    'newline down': Key('cmd-enter'),
+    'paste match': Key('cmd-shift-v'),
+
+    # navigation
     'go line': Key("ctrl-g"),
+    'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
     'wipe start': [Key('cmd-shift-left'), Key('backspace')],
     'wipe end': [Key('cmd-shift-right'), Key('backspace')],
+    'paren jump': Key('ctrl-m'),
+
+    # find & replace
+    'find': Key('cmd-f'),
 }
 
 ctx.keymap(keymap)
