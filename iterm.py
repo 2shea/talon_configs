@@ -11,6 +11,7 @@ keymap = {
     'split vertical': Key('cmd-d'),
     'next split': Key('cmd-]'),
     'last split': Key('cmd-['),
+    '2(subble | subtle)': 'subl',
 }
 
 ctx.keymap(keymap)
