@@ -180,6 +180,8 @@ keymap.update({
     'run get bisect': 'git bisect ',
     'run get branch': 'git branch ',
     'run get checkout': 'git checkout ',
+    'run get checkout master': 'git checkout master',
+    'run get checkout new': 'git checkout -b',
     'run get clone': 'git clone ',
     'run get commit': 'git commit ',
     'run get diff': 'git diff ',
