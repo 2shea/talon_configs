@@ -10,16 +10,42 @@ alpha = {}
 alpha.update(dict(alnum))
 alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
-alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in alnum})
-alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in alnum})
-alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in alnum})
-alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in alnum})
+# modifier key mappings
+keys = [
+    'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
+    'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
+] + [f'f{i}' for i in range(1, 13)]
+keys = alnum + [(k, k) for k in keys]
+keys += [
+    ('tilde', '`'),
+    ('comma', ','),
+    ('dot', '.'),
+    ('slash', '/'),
+    ('(semi | semicolon)', ';'),
+    ('quote', "'"),
+    ('[left] square', '['),
+    ('(right | are) square', ']'),
+    ('backslash', '\\'),
+    ('minus', '-'),
+    ('equals', '='),
+]
+alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in keys})
+alpha.update({'control shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in keys})
+alpha.update({'control alt %s' % k: Key('ctrl-alt-%s' % v) for k, v in keys})
+alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in keys})
+alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
+alpha.update({'command alt shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
+alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in keys})
+alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
 
+# cleans up some Dragon output from <dgndictation>
 mapping = {
     'semicolon': ';',
     'new-line': '\n',
     'new-paragraph': '\n\n',
 }
+
+# used for auto-spacing
 punctuation = set('.,-!?')
 
 def parse_word(word):
