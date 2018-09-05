@@ -136,6 +136,9 @@ keymap = {
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
     'fullscreen': Key('ctrl-cmd-f'),
+    'column one' : Key('alt-cmd-1'),
+    'column two': Key('alt-cmd-2'),
+    'column three': Key('alt-cmd-3'),
 
     # file
     '(save | safe)': Key('cmd-s'),
