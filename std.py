@@ -222,6 +222,7 @@ keymap.update({
     'run get pull': 'git pull ',
     'run get push': 'git push ',
     'run get push origin': 'git push origin',
+    'run get push origin master': 'git push origin master',
     'run get rebase': 'git rebase ',
     'run get rebase master': 'git rebase master -i',
     'run get reset': 'git reset ',
