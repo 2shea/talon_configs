@@ -298,6 +298,7 @@ keymap.update({
     '(strike | clear | scratch )': Key('cmd-backspace'),
     'self':'self',
     'class':'class',
+    'return': 'return',
 
     'word talon': 'talon',
     'word Point2d': 'Point2d',
