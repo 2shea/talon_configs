@@ -146,6 +146,9 @@ keymap = {
     'select word': Key('cmd-d'),
     'select all': Key('cmd-a'),
     'select scope': Key('shift-cmd-'),
+    'cursor up': Key('ctrl-shift-up'),
+    'cursor down': Key('ctrl-shift-down'),
+    'cursor undo': Key('cmd-u'),
 
     # edit
     'wipe start': [Key('cmd-shift-left'), Key('backspace')],
