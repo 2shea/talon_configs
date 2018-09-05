@@ -11,10 +11,11 @@ alpha.update(dict(alnum))
 alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
 
 # modifier key mappings
+fkeys = [(f'F {i}', f'f{i}') for i in range(1, 13)]
 keys = [
     'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
     'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
-] + [f'f{i}' for i in range(1, 13)]
+]
 keys = alnum + [(k, k) for k in keys]
 keys += [
     ('tilde', '`'),
@@ -28,7 +29,8 @@ keys += [
     ('backslash', '\\'),
     ('minus', '-'),
     ('equals', '='),
-]
+] + fkeys
+alpha.update({word: Key(key) for word, key in fkeys})
 alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in keys})
 alpha.update({'control shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in keys})
 alpha.update({'control alt %s' % k: Key('ctrl-alt-%s' % v) for k, v in keys})
