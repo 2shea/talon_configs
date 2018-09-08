@@ -80,8 +80,6 @@ def get_first_word(m):
     return str(m.dgndictation[0]._words[0])
 
 keymap = {
-    # 'sprinkle' + optional_numerals: jump_to_bol,
-    # 'sprinkler'
     'trundle': toggle_comments,
     'trundle super': Key('cmd-alt-/'),
     'trundle' + numerals: jump_to_bol_and(toggle_comments), # noop for plain/text
@@ -138,6 +136,7 @@ keymap = {
 
     # navigation
     'go line': Key("ctrl-g"),
+    'sprinkle' + optional_numerals: jump_to_bol,
     'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
