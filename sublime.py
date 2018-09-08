@@ -147,11 +147,19 @@ keymap = {
     # selection
     'select line': Key('cmd-l'),
     'select word': Key('cmd-d'),
+    'all word': Key('cmd-ctrl-g'), # expand currently selected word to all occurances
     'select all': Key('cmd-a'),
-    'select scope': Key('shift-cmd-'),
+    'select scope': Key('shift-cmd-space'),
+    'select bracket': Key('ctrl-shift-m'),
+    'select indent': Key('shift-cmd-j'),
     'cursor up': Key('ctrl-shift-up'),
     'cursor down': Key('ctrl-shift-down'),
-    'cursor undo': Key('cmd-u'),
+    '(cursor | select) undo': Key('cmd-u'),
+    'undo (select | cursor)': Key('cmd-u'),
+    'select up': Key('shift-up'),
+    'select down': Key('shift-down'),
+    'select right': Key('shift-right'),
+    'select left': Key('shift-left'),
 
     # edit
     'wipe start': [Key('cmd-shift-left'), Key('backspace')],
@@ -165,6 +173,7 @@ keymap = {
     'newline up': Key('cmd-shift-enter'),
     'newline down': Key('cmd-enter'),
     'paste match': Key('cmd-shift-v'),
+    'delete word': Key('alt-backspace'),
 
     # navigation
     'go line': Key("ctrl-g"),
@@ -179,5 +188,12 @@ keymap = {
     'find': Key('cmd-f'),
 }
 
-ctx.keymap(keymap)
+keymap.update({'select down %s' % k: [Key('shift-down')] * k for k in range(1,10)})
+keymap.update({'select up %s' % k: [Key('shift-up')] * k for k in range(1,10)})
+keymap.update({'select right %s' % k: [Key('shift-right')] * k for k in range(1,10)})
+keymap.update({'select left %s' % k: [Key('shift-left')] * k for k in range(1,10)})
+keymap.update({'cursor up %s' % k: [Key('ctrl-shift-up')] * k for k in range(1,10)})
+keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range(1,10)})
+keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
 
+ctx.keymap(keymap)
