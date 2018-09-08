@@ -373,6 +373,9 @@ keymap.update({
 
     'scroll up': Key('pgup'),
     'scroll down': Key('pgdown'),
+    'copy': Key('cmd-c'),
+    'cut': Key('cmd-x'),
+    'paste': Key('cmd-v'),
 
     'flock off': Key('escape'),
     '(2 | two | too) shea': '2shea',
