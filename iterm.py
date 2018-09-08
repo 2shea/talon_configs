@@ -12,7 +12,6 @@ keymap = {
     'next split': Key('cmd-]'),
     'last split': Key('cmd-['),
     '(subble | subtle)': 'subl',
-    'ack': 'ack',
     '(scratch | scrap)': Key('ctrl-u'),
 }
 

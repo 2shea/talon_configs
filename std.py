@@ -201,6 +201,10 @@ keymap.update({
     'cd talon user': 'cd {}'.format(TALON_USER),
     'cd talon plugins': 'cd {}'.format(TALON_PLUGINS),
 
+    'grep': 'grep',
+    'elle less': 'ls',
+    'ack': 'ack',
+
     'run make (durr | dear)': 'mkdir ',
     'run get': 'git ',
     'run get (R M | remove)': 'git rm ',
