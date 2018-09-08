@@ -13,6 +13,7 @@ keymap = {
     'last split': Key('cmd-['),
     '(subble | subtle)': 'subl',
     'ack': 'ack',
+    '(scratch | scrap)': Key('ctrl-u'),
 }
 
 ctx.keymap(keymap)
