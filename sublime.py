@@ -102,6 +102,7 @@ keymap = {
     # file
     '(save | safe)': Key('cmd-s'),
     'close file': Key('cmd-w'),
+    'go file': Key('cmd-t'),
 
     # selection
     'select line': Key('cmd-l'),
