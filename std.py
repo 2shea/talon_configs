@@ -204,10 +204,21 @@ keymap.update({
 
     'grep': 'grep ',
     'elle less': 'ls ',
+    'run L S': 'ls\n',
+    'run (S S H | S H)': 'ssh',
     'ack': 'ack ',
     'diff': 'diff ',
-
+    'run (them | vim)': 'vim ',
+    'dot pie': '.py',
+    'run make': 'make\n',
+    'run jobs': 'jobs\n',
     'run make (durr | dear)': 'mkdir ',
+    '(jay son | jason )': 'json',
+    '(http | htp)': 'http',
+    'tls': 'tls',
+    'md5': 'md5',
+
+    # git
     'run get': 'git ',
     'run get (R M | remove)': 'git rm ',
     'run get add': 'git add ',
@@ -235,11 +246,6 @@ keymap.update({
     'run get status': 'git status ',
     'run get stash': 'git stash ',
     'run get tag': 'git tag ',
-    'run (them | vim)': 'vim ',
-    'run L S': 'ls\n',
-    'dot pie': '.py',
-    'run make': 'make\n',
-    'run jobs': 'jobs\n',
 
     'const': 'const ',
     'static': 'static ',
@@ -298,19 +304,13 @@ keymap.update({
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
 
-    '(jay son | jason )': 'json',
-    'on (deaf | dev | deft)': 'undef',
-    'die':'die',
-    '(strike | clear | scratch )': Key('cmd-backspace'),
-    'self':'self',
-    'class':'class',
-    'return': 'return',
-
     'word talon': 'talon',
     'word Point2d': 'Point2d',
     'word Point3d': 'Point3d',
     'title Point': 'Point',
     'word angle': 'angle',
+
+    'code pearl': 'perl',
 
     'dunder in it': '__init__',
     'self taught': 'self.',
@@ -386,6 +386,7 @@ keymap.update({
     '(undo | under | skunks)': Key('cmd-z'),
     'redo': Key('cmd-shift-z'),
     'twice': Rep(1),
+    '(strike | clear | scratch )': Key('cmd-backspace'),
 })
 
 keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in range(1,10)})
