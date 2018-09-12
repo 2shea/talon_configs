@@ -11,7 +11,7 @@ keymap = {
     'split vertical': Key('cmd-d'),
     'next split': Key('cmd-]'),
     'last split': Key('cmd-['),
-    '(subble | subtle)': 'subl',
+    '(subble | subtle)': 'subl ',
     '(scratch | scrap)': Key('ctrl-u'),
 }
 
