@@ -310,8 +310,6 @@ keymap.update({
     'title Point': 'Point',
     'word angle': 'angle',
 
-    'code pearl': 'perl',
-
     'dunder in it': '__init__',
     'self taught': 'self.',
     'dickt in it': ['{}', Key('left')],

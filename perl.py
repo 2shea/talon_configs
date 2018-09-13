@@ -19,7 +19,8 @@ ctx.keymap({
     'use': 'use',
     'strict': 'strict',
     'log for pearl': 'Log4perl',
-
+    'see pan (m | em | minus)': 'cpanm ',
+    'pearl tidy': 'perltidy',
 
 })
 
