@@ -1,10 +1,10 @@
 from talon.voice import Context, Key
 
 def perl(app, win):
-    print(('win.doc', win.doc))
-    print(('win.title', win.title))
-    return any(win.doc.endswith(x) for x in ('.pm','.pl','.PM','.t'))
-    # return win.doc.endswith('.pl')
+    # print(('win.doc', win.doc))
+    # print(('win.title', win.title))
+    # print(('win.app', win.app.name))
+    return (any(win.doc.endswith(x) for x in ('.pm','.pl','.PM','.t')) or win.app.name == 'iTerm2' )
 
 ctx = Context('perl', func=perl)
 
