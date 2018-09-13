@@ -86,11 +86,7 @@ keymap = {
 
     'tools beautify': Key('ctrl-alt-f'),
 
-    'shackle': Key('cmd-l'),
 
-    # 'shockey': Key('cmd-shift-enter'),
-    # 'shockoon': Key('cmd-right enter'),
-    # 'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
 
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
@@ -105,7 +101,7 @@ keymap = {
     'go file': Key('cmd-t'),
 
     # selection
-    'select line': Key('cmd-l'),
+    '(select line | shackle)': Key('cmd-l'),
     'select word': Key('cmd-d'),
     'all word': Key('cmd-ctrl-g'), # expand currently selected word to all occurances
     'select all': Key('cmd-a'),
@@ -120,6 +116,8 @@ keymap = {
     'select down': Key('shift-down'),
     'select right': Key('shift-right'),
     'select left': Key('shift-left'),
+    'select end': Key('cmd-shift-right'),
+    'select (start | begin)': Key('cmd-shift-left'),
 
     # edit
     'wipe start': [Key('cmd-shift-left'), Key('backspace')],
@@ -133,12 +131,17 @@ keymap = {
     'newline up': Key('cmd-shift-enter'),
     'newline down': Key('cmd-enter'),
     'paste match': Key('cmd-shift-v'),
-    'delete word': Key('alt-backspace'),
+    '(scrap | scratch) word': Key('alt-backspace'),
+    '(scrap | scratch) (begin | start)': Key('cmd-backspace'),
+    '(scrap | scratch) end': [Key('cmd-k'), Key('cmd-k')],
+    '(uppercase | upcase)': [Key('cmd-k'), Key('cmd-u')],
+    '(lowercase | downcase)': [Key('cmd-k'), Key('cmd-l')],
 
     # navigation
     'go line': Key("ctrl-g"),
     'sprinkle' + optional_numerals: jump_to_bol,
     'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
+    'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
     'wipe start': [Key('cmd-shift-left'), Key('backspace')],
