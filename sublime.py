@@ -92,7 +92,9 @@ keymap = {
     'column three': Key('alt-cmd-3'),
 
     # file
+    'new file': Key('cmd-n'),
     '(save | safe)': Key('cmd-s'),
+    '(save | safe) all': Key('cmd-alt-s'),
     'close file': Key('cmd-w'),
     'go file': Key('cmd-t'),
 
