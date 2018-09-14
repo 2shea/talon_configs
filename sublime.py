@@ -129,9 +129,9 @@ keymap = {
     'newline up': Key('cmd-shift-enter'),
     'newline down': Key('cmd-enter'),
     'paste match': Key('cmd-shift-v'),
-    '(scrap | scratch) word': Key('alt-backspace'),
-    '(scrap | scratch) (begin | start)': Key('cmd-backspace'),
-    '(scrap | scratch) end': [Key('cmd-k'), Key('cmd-k')],
+    '(scrap | scratch | delete) word': Key('alt-backspace'),
+    '(scrap | scratch | delete) (begin | start)': Key('cmd-backspace'),
+    '(scrap | scratch | delete) end': [Key('cmd-k'), Key('cmd-k')],
     '(uppercase | upcase)': [Key('cmd-k'), Key('cmd-u')],
     '(lowercase | downcase)': [Key('cmd-k'), Key('cmd-l')],
 
