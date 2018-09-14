@@ -84,8 +84,6 @@ keymap = {
     'trundle super': Key('cmd-alt-/'),
     'trundle' + numerals: jump_to_bol_and(toggle_comments), # noop for plain/text
 
-    'tools beautify': Key('ctrl-alt-f'),
-
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
     'fullscreen': Key('ctrl-cmd-f'),
