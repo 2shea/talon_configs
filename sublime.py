@@ -86,8 +86,6 @@ keymap = {
 
     'tools beautify': Key('ctrl-alt-f'),
 
-
-
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
     'fullscreen': Key('ctrl-cmd-f'),
@@ -120,8 +118,6 @@ keymap = {
     'select (start | begin)': Key('cmd-shift-left'),
 
     # edit
-    'wipe start': [Key('cmd-shift-left'), Key('backspace')],
-    'wipe end': [Key('cmd-shift-right'), Key('backspace')],
     'snipline' + optional_numerals: jump_to_bol_and(snipline),
     'snipline super': Key('ctrl-shift-k'),
     'dent': Key('cmd-]'),
@@ -144,8 +140,6 @@ keymap = {
     'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
-    'wipe start': [Key('cmd-shift-left'), Key('backspace')],
-    'wipe end': [Key('cmd-shift-right'), Key('backspace')],
     'paren jump': Key('ctrl-m'),
     'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
