@@ -114,8 +114,10 @@ keymap = {
     'select down': Key('shift-down'),
     'select right': Key('shift-right'),
     'select left': Key('shift-left'),
-    'select end': Key('cmd-shift-right'),
-    'select (start | begin)': Key('cmd-shift-left'),
+    'select (end | push)': Key('cmd-shift-right'),
+    'select (start | begin | pop)': Key('cmd-shift-left'),
+    'bounce [right]': Key('ctrl-alt-shift-right'),
+    'bounce left': Key('ctrl-alt-shift-left'),
 
     # edit
     'snipline' + optional_numerals: jump_to_bol_and(snipline),
@@ -143,6 +145,10 @@ keymap = {
     'paren jump': Key('ctrl-m'),
     'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
+    'jump [forward]': Key('ctrl-alt-f'),
+    'jump back': Key('ctrl-alt-b'),
+    'push': Key('cmd-right'),
+    'pop': Key('cmd-left'),
 
     # find & replace
     'find': Key('cmd-f'),
