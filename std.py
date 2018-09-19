@@ -102,7 +102,7 @@ formatters = {
     'smash':  (True,  lambda i, word, _: word),
     # spinal or kebab?
     'kebab':  (True,  lambda i, word, _: word if i == 0 else '-'+word),
-    'package': (True, lambda i, word, _: word if i == 0 else '::'+word),
+    'pack': (True, lambda i, word, _: word if i == 0 else '::'+word),
     # 'sentence':  (False, lambda i, word, _: word.capitalize() if i == 0 else word),
     'title':  (False, lambda i, word, _: word.capitalize()),
     'allcaps': (False, lambda i, word, _: word.upper()),
