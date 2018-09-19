@@ -112,12 +112,14 @@ keymap = {
     'undo (select | cursor)': Key('cmd-u'),
     'select up': Key('shift-up'),
     'select down': Key('shift-down'),
+    'select bottom ': Key('cmd-shift-down'),
+    'select top ': Key('ctrl-shift-up'),
     'select right': Key('shift-right'),
     'select left': Key('shift-left'),
     'select (end | push)': Key('cmd-shift-right'),
     'select (start | begin | pop)': Key('cmd-shift-left'),
     'bounce [right]': Key('ctrl-alt-shift-right'),
-    'bounce left': Key('ctrl-alt-shift-left'),
+    'bounce (left | back)': Key('ctrl-alt-shift-left'),
 
     # edit
     'snipline' + optional_numerals: jump_to_bol_and(snipline),
