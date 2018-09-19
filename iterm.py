@@ -7,12 +7,14 @@ keymap = {
     'exit session': [Key('ctrl-c'), 'exit\n'],
     'broadcaster': Key('cmd-alt-i'),
     'clear session': [Key('ctrl-c'), 'clear\n'],
+    'clear': Key('cmd-k'),
     'split horizontal': Key('cmd-shift-d'),
     'split vertical': Key('cmd-d'),
-    'next split': Key('cmd-]'),
-    'last split': Key('cmd-['),
+    'next (split | pane)': Key('cmd-]'),
+    'last (split | pane)': Key('cmd-['),
     '(subble | subtle)': 'subl ',
     '(scratch | scrap)': Key('ctrl-u'),
+    'find': Key('cmd-f'),
 }
 
 ctx.keymap(keymap)
