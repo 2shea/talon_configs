@@ -15,6 +15,8 @@ keymap = {
     '(subble | subtle)': 'subl ',
     '(scratch | scrap)': Key('ctrl-u'),
     'find': Key('cmd-f'),
+    'jump back': Key('ctrl-[ b'),
+    'jump [forward]': Key('ctrl-] f'),
 }
 
 ctx.keymap(keymap)
