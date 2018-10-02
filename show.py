@@ -1,6 +1,5 @@
 import string
-from talon import voice
-from talon.voice import Context, Str
+from talon.voice import Context
 from talon import canvas
 from talon import ui
 from talon.skia import Rect
@@ -66,21 +65,8 @@ def close_alphabet():
     panel.hide()
     alphabet_context.unload()
 
-def show_ctx(word):
-	ret = ""
-	for name, ctx in voice.talon.subs.items():
-		if ctx in voice.talon.active:
-			ret += f'[{ctx.name}]\n'
-		else:
-			ret += f'[{ctx.name}] (inactive)\n'
-		# for trigger in ctx.triggers:
-		#     ret += f' - {trigger}'
-		Str(ret)(None)
-
 keymap = {
-	'show contexts': show_ctx,
 	'show alphabet': show_alphabet,
-	# ' context <dgndictation>': lambda m: show_context(m),
 }
 
 ctx.keymap(keymap)
