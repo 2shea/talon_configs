@@ -207,6 +207,7 @@ keymap.update({
     'elle less': 'ls ',
     'run L S': 'ls\n',
     'run (S S H | S H)': 'ssh',
+    '(ssh | sh)': 'ssh',
     'ack': 'ack ',
     'diff': 'diff ',
     'run (them | vim)': 'vim ',
@@ -227,10 +228,11 @@ keymap.update({
     'run get branch': 'git branch ',
     'run get checkout': 'git checkout ',
     'run get checkout master': 'git checkout master',
-    'run get checkout new': 'git checkout -b',
+    'run get checkout new': 'git checkout -b ',
     'run get clone': 'git clone ',
     'run get commit': 'git commit ',
     'run get diff': 'git diff ',
+    'run get diff master': 'git diff master',
     'run get fetch': 'git fetch ',
     'run get grep': 'git grep ',
     'run get in it': 'git init ',
@@ -247,6 +249,7 @@ keymap.update({
     'run get show': 'git show ',
     'run get status': 'git status ',
     'run get stash': 'git stash ',
+    'run get stash pop': 'git stash pop',
     'run get tag': 'git tag ',
 
     'const': 'const ',
@@ -380,12 +383,12 @@ keymap.update({
     'paste': Key('cmd-v'),
 
     'flock off': Key('escape'),
-    '(2 | two | too) shea': '2shea',
     'menu help': Key('cmd-shift-?'),
     'spotlight': Key('cmd-space'),
     '(undo | under | skunks)': Key('cmd-z'),
     'redo': Key('cmd-shift-z'),
     'twice': Rep(1),
+
     '(strike | clear | scratch )': Key('cmd-backspace'),
 })
 
