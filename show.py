@@ -55,7 +55,7 @@ def show_alphabet(_):
 	panel.freeze()
 
 	keymap = {
-		'(0 | exit | escape)': lambda x: close_alphabet(),
+		'(0 | quit | exit | escape)': lambda x: close_alphabet(),
 	}
 
 	alphabet_context.keymap(keymap)
