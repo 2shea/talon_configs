@@ -169,13 +169,13 @@ def raise_homophones(m, force_raise=False, is_selection=False):
     keymap.update({'%s' % (i + 1):
                    lambda m: make_selection(m, is_selection)
                    for i in valid_indices})
-    keymap.update({'ship %s' % (i + 1):
+    keymap.update({'(title | capitalize | ship) %s' % (i + 1):
                    lambda m: make_selection(m, is_selection, capitalize)
                    for i in valid_indices})
-    keymap.update({'yeller %s' % (i + 1):
+    keymap.update({'(upper | uppercase | yeller) %s' % (i + 1):
                    lambda m: make_selection(m, is_selection, uppercase)
                    for i in valid_indices})
-    keymap.update({'lower %s' % (i + 1):
+    keymap.update({'(lower | lowercase) %s' % (i + 1):
                    lambda m: make_selection(m, is_selection, lowercase)
                    for i in valid_indices})
     pick_context.keymap(keymap)
