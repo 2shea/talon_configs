@@ -158,7 +158,7 @@ def raise_homophones(m, force_raise=False, is_selection=False):
     panel.freeze()
 
     keymap = {
-        '0': lambda x: close_homophones(),
+        'pick 0': lambda x: close_homophones(),
     }
 
     def capitalize(x):
@@ -170,7 +170,7 @@ def raise_homophones(m, force_raise=False, is_selection=False):
     def lowercase(x):
         return x.lower()
 
-    keymap.update({'%s' % (i + 1):
+    keymap.update({'pick %s' % (i + 1):
                    lambda m: make_selection(m, is_selection)
                    for i in valid_indices})
     keymap.update({'(title | capitalize | ship) %s' % (i + 1):
