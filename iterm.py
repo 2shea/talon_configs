@@ -7,7 +7,7 @@ keymap = {
     'exit session': [Key('ctrl-c'), 'exit\n'],
     'broadcaster': Key('cmd-alt-i'),
     'clear session': [Key('ctrl-c'), 'clear\n'],
-    'clear': Key('cmd-k'),
+    'clean': Key('cmd-k'),
     'split horizontal': Key('cmd-shift-d'),
     'split vertical': Key('cmd-d'),
     'next (split | pane)': Key('cmd-]'),
