@@ -144,6 +144,15 @@ def FormatText(m):
 
 ctx = Context('input')
 
+ctx.vocab = [
+    'docker',
+    'talon',
+    'pragma',
+    'vim',
+    'configs',
+    'spotify',
+]
+
 keymap = {}
 keymap.update(alpha)
 keymap.update({
@@ -210,7 +219,6 @@ keymap.update({
     '(ssh | sh)': 'ssh',
     'ack': 'ack ',
     'diff': 'diff ',
-    'run (them | vim)': 'vim ',
     'dot pie': '.py',
     'run make': 'make\n',
     'run jobs': 'jobs\n',
@@ -309,7 +317,6 @@ keymap.update({
     'word (dickt | dictionary)': 'dict',
     'word shell': 'shell',
 
-    'word talon': 'talon',
     'word Point2d': 'Point2d',
     'word Point3d': 'Point3d',
     'title Point': 'Point',

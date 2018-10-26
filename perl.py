@@ -5,14 +5,19 @@ def perl(app, win):
 
 ctx = Context('perl', func=perl)
 
+ctx.vocab = [
+    'params',
+    'perltidy',
+    'undef',
+    'perl',
+    'diag',
+    'plack',
+]
+
 ctx.keymap({
-	'pearl': 'perl',
-    'on (deaf | dev | deft)': 'undef',
     'log for pearl': 'Log4perl',
     'see pan (m | em | minus)': 'cpanm ',
-    'pearl tidy': 'perltidy',
     '(warren | worn | warn)': 'warn',
-    '(die ag | diag)': 'diag',
-    'paramus': 'params',
+    'use pragmas': 'use strict;\nuse warnings;\n',
 })
 
