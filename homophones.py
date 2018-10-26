@@ -1,10 +1,7 @@
-from talon import app, ui, clip, cron
-from talon.audio import record, noise
+from talon import app, clip, cron
 from talon.engine import engine
 from talon.voice import Word, Key, Context, Str, press
-
-from talon import canvas
-from talon.skia import Rect
+from talon.webview import Webview
 
 from user.std import parse_word
 import os
@@ -22,10 +19,6 @@ homophones_file = os.path.join(cwd, 'homophones.csv')
 # if quick_replace, then when a word is selected and only one homophone exists,
 # replace it without bringing up the options
 quick_replace = True
-# font size of the overlay
-font_size = 22
-# left padding of the font in the overlay
-padding_left = 20
 ########################################################################
 
 context = Context('homophones')
@@ -55,39 +48,52 @@ all_homophones = phones
 active_word_list = None
 # is_selection = False
 
+webview = Webview()
+template = '''
+<style type="text/css">
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 200%;
+}
+.contents {
+    width: 100%;
+}
+td {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+}
 
-def draw_homophones(canvas):
-    global active_word_list
-    if active_word_list is None:
-        return
+table {
+    counter-reset: rowNumber;
+}
 
-    paint = canvas.paint
-    paint.textsize = font_size
-    paint.color = '000000'
-    paint.style = paint.Style.FILL
-    canvas.draw_rect(Rect(canvas.x, canvas.y, canvas.width, canvas.height))
+table tr {
+    counter-increment: rowNumber;
+}
 
-    line_height = paint.get_fontmetrics(1.5)[0]
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-with: 1em;
+    margin-right: 0.5em;
+}
 
-    h = active_word_list
-    h_string = ['%d . %s' % (i + 1, h[i]) for i in range(len(h))]
-    paint.color = 'ffffff'
-    for i in range(len(h_string)):
-        h = h_string[i]
-        canvas.draw_text(h, canvas.x + padding_left,
-                         canvas.y + line_height + (i * line_height))
-
-
-# initialize the overlay
-screen = ui.main_screen()
-w, h = screen.width / 3, screen.height / 3
-panel = canvas.Canvas(w, h, w, h, panel=True)
-panel.register('draw', draw_homophones)
-panel.hide()
+</style>
+<h3>homophones</h3>
+<div class="contents">
+<table>
+{% for word in homophones %}
+    <tr><td>{{ word }}</td></tr>
+{% endfor %}
+</table>
+</div>
+'''
 
 
 def close_homophones():
-    panel.hide()
+    webview.hide()
     pick_context.unload()
 
 
@@ -154,8 +160,10 @@ def raise_homophones(m, force_raise=False, is_selection=False):
         return
 
     valid_indices = range(len(active_word_list))
-    panel.show()
-    panel.freeze()
+
+    print(active_word_list)
+    webview.render(template, homophones=active_word_list)
+    webview.show()
 
     keymap = {
         'pick 0': lambda x: close_homophones(),
