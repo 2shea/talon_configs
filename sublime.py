@@ -143,7 +143,7 @@ keymap = {
     # navigation
     'go line': Key("ctrl-g"),
     'sprinkle' + optional_numerals: jump_to_bol,
-    '(spring | jump)' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
+    'spring' + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
     'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
