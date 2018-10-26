@@ -45,6 +45,13 @@ mapping = {
     'semicolon': ';',
     'new-line': '\n',
     'new-paragraph': '\n\n',
+    'furnish': 'varnish',
+    'pseudo-': 'sudo',
+    'apt get': 'apt-get',
+    'krohn': 'cron',
+    'standard out': 'stdout',
+    'standard in': 'stdin',
+    'standard error': 'stderr',
 }
 
 # used for auto-spacing
