@@ -110,6 +110,8 @@ keymap = {
     'select indent': Key('shift-cmd-j'),
     'cursor up': Key('ctrl-shift-up'),
     'cursor down': Key('ctrl-shift-down'),
+    'cursor push': Key('cmd-shift-l'),
+    'cursor pop': [Key('cmd-shift-l'), Key('cmd-left')],
     '(cursor | select) undo': Key('cmd-u'),
     'undo (select | cursor)': Key('cmd-u'),
     'select up': Key('shift-up'),
