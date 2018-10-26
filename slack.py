@@ -30,6 +30,7 @@ keymap = {
     '(starred [items] | stars)': Key('cmd-shift-s'),
     'unread [messages]': Key('cmd-j'),
     '(go | undo | toggle) full': Key('ctrl-cmd-f'),
+    '(find | search)': Key('cmd-f'),
 
     # Messaging
     'grab left': Key('shift-up'),
