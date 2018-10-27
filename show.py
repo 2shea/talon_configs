@@ -53,7 +53,7 @@ def close_alphabet():
     alphabet_context.unload()
 
 keymap = {
-	'show alphabet': show_alphabet,
+	'[show] alphabet': show_alphabet,
 }
 
 ctx.keymap(keymap)
