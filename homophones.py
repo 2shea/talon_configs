@@ -192,19 +192,43 @@ def raise_homophones(m, force_raise=False, is_selection=False):
     pick_context.keymap(keymap)
     pick_context.load()
 
+help_template = '''
+<style type="text/css">
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 200%
+}
 
-# keymap = {
-#     # Usage:
-#     # 'homophones word' to look up those homophones.
-#     # when the list pops up, say appropriate number or zero
-#     # (leave and do nothing).
-#     # can also call 'homophones' without any arguments.
-#     # it will look at the selected text and look that up.
-#     # 'phones [<dgndictation>]': raise_homophones,
-#     # 'force phones [<dgndictation>]': lambda m: raise_homophones(m, True),
-# }
+.contents {
+}
+
+p {
+    text-align: left;
+}
+</style>
+<h3>homophones help</h3>
+<div class="contents">
+<p>"phones" to look up homophones for selected text</p>
+<p>"phone [word]" to look up homophones for a given word</p>
+<p>"pick [number]" to make a selection from the homophone list</p>
+<p>"pick 0" to exit with no selection</p>
+<p>"exit" to exit help</p>
+</div>
+'''
+
+def homophones_help(m):
+    webview.render(help_template)
+    webview.show()
+
+    keymap = {
+        'exit': lambda x: close_homophones(),
+    }
+    pick_context.keymap(keymap)
+    pick_context.load()
 
 context.keymap({
+    'phones help': homophones_help,
     'phones {homophones.all}': raise_homophones,
     'phones': lambda m: raise_homophones(m, is_selection=True),
     'force phones {homophones.canonical}': lambda m: raise_homophones(m, force_raise=True),
