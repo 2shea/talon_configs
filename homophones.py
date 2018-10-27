@@ -161,7 +161,6 @@ def raise_homophones(m, force_raise=False, is_selection=False):
 
     valid_indices = range(len(active_word_list))
 
-    print(active_word_list)
     webview.render(template, homophones=active_word_list)
     webview.show()
 
