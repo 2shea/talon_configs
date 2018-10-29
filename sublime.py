@@ -86,6 +86,7 @@ keymap = {
 
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
+    'console': Key('ctrl-`'),
     'fullscreen': Key('ctrl-cmd-f'),
     'column one' : Key('alt-cmd-1'),
     'column two': Key('alt-cmd-2'),
@@ -96,6 +97,7 @@ keymap = {
     '(save | safe)': Key('cmd-s'),
     '(save | safe) all': Key('cmd-alt-s'),
     'close file': Key('cmd-w'),
+    'revert': Key('ctrl-alt-r'),
     'go file': Key('cmd-t'),
 
     # selection
