@@ -407,6 +407,14 @@ keymap.update({
     'twice': Rep(1),
 
     '(strike | clear | scratch )': Key('cmd-backspace'),
+
+    'more bright': Key('brightness_up'),
+    'less bright': Key('brightness_down'),
+    'volume up': Key('volume_up'),
+    'volume down': Key('volume_down'),
+    'mute': Key('mute'),
+    'next': Key('next'),
+    'previous': Key('previous'),
 })
 
 keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in range(1,10)})
