@@ -52,6 +52,8 @@ mapping = {
     'standard out': 'stdout',
     'standard in': 'stdin',
     'standard error': 'stderr',
+    'keep': 'key',
+    'keeper': 'key',
 }
 
 # used for auto-spacing
