@@ -263,6 +263,7 @@ keymap.update({
     'run get rebase': 'git rebase ',
     'run get rebase master': 'git rebase master -i',
     'run get reset': 'git reset ',
+    'run get reset (had | head)': 'git reset HEAD^',
     'run get show': 'git show ',
     'run get status': 'git status ',
     'run get stash': 'git stash ',
