@@ -161,6 +161,9 @@ keymap = {
 
     # find & replace
     'find': Key('cmd-f'),
+    'expression': Key('alt-cmd-r'),
+    'case insensitive': Key('alt-cmd-c'),
+    'whole word': Key('alt-cmd-w'),
 }
 
 keymap.update({'select down %s' % k: [Key('shift-down')] * k for k in range(1,10)})
