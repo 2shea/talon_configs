@@ -153,7 +153,7 @@ keymap = {
     'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
     'jump [forward]': Key('ctrl-alt-f'),
-    'jump back': Key('ctrl-alt-b'),
+    '(jump back | jazz)': Key('ctrl-alt-b'),
     'jump (up | start)': Key('cmd-up'),
     'jump (down | end)': Key('cmd-down'),
     'push': Key('cmd-right'),
@@ -170,5 +170,7 @@ keymap.update({'select left %s' % k: [Key('shift-left')] * k for k in range(1,10
 keymap.update({'cursor up %s' % k: [Key('ctrl-shift-up')] * k for k in range(1,10)})
 keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range(1,10)})
 keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
+keymap.update({'jump %s' % k: [Key('ctrl-alt-f')] * k for k in range(1,10)})
+keymap.update({'(jump back | jazz) %s' % k: [Key('ctrl-alt-b')] * k for k in range(1,10)})
 
 ctx.keymap(keymap)

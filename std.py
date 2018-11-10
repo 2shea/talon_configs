@@ -236,6 +236,7 @@ keymap.update({
     '(http | htp)': 'http',
     'tls': 'tls',
     'md5': 'md5',
+    '(regex | rejex)': 'regex',
 
     # git
     'run get': 'git ',
