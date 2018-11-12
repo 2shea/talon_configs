@@ -92,12 +92,16 @@ keymap = {
     'column two': Key('alt-cmd-2'),
     'column three': Key('alt-cmd-3'),
 
+    # window
+    # new window
+    # close window
+
     # file
     'new file': Key('cmd-n'),
     '(save | safe)': Key('cmd-s'),
     '(save | safe) all': Key('cmd-alt-s'),
-    'close file': Key('cmd-w'),
-    'revert': Key('ctrl-alt-r'),
+    'close (file | tab)': Key('cmd-w'),
+    'revert': Key('ctrl-alt-r'), # requires adding key binding
     'go file': Key('cmd-t'),
 
     # selection
