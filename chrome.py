@@ -33,10 +33,10 @@ keymap = {
 	'main frame': Key('g F'),
 
 	# navigating to new pages
-	'open (url | history)': Key('o'),
-	'open (url | history) new': Key('O'),
-	'open bookmark': Key('b'),
-	'open bookmark new': Key('B'),
+	'(open | go) (url | history)': Key('o'),
+	'(open | go) (url | history) new': Key('O'),
+	'(open | go) bookmark': Key('b'),
+	'(open | go) bookmark new': Key('B'),
 
 	# using find
 	'find mode': Key('/'),
