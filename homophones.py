@@ -46,7 +46,7 @@ with open(homophones_file, 'r') as f:
 all_homophones = phones
 
 active_word_list = None
-# is_selection = False
+is_selection = False
 
 webview = Webview()
 template = '''
@@ -56,39 +56,48 @@ body {
     margin: 0;
     font-size: 200%;
 }
-.contents {
-    width: 100%;
-}
+
 td {
     text-align: left;
     margin: 0;
-    padding: 0;
-    padding-left: 10px;
+    padding: 5px 10px;
+}
+
+h3 {
+    padding: 5px 0px;
 }
 
 table {
     counter-reset: rowNumber;
 }
 
-table tr {
+table .count {
     counter-increment: rowNumber;
 }
 
-table tr td:first-child::before {
+.count td:first-child::after {
     content: counter(rowNumber);
     min-with: 1em;
     margin-right: 0.5em;
 }
 
+.pick {
+    font-weight: normal;
+    font-style: italic;
+}
+
+.cancel {
+    text-align: center;
+}
+
 </style>
-<h3>homophones</h3>
-<div class="contents">
 <table>
+<h3>homophones</h3>
 {% for word in homophones %}
-    <tr><td>{{ word }}</td></tr>
+<tr class="count"><td class="pick">🔊 pick </td><td>{{ word }}</td></tr>
 {% endfor %}
+<tr><td colspan="2" class="pick cancel">🔊 cancel</td></tr>
 </table>
-</div>
 '''
 
 
@@ -165,7 +174,7 @@ def raise_homophones(m, force_raise=False, is_selection=False):
     webview.show()
 
     keymap = {
-        'pick 0': lambda x: close_homophones(),
+        'cancel': lambda x: close_homophones(),
     }
 
     def capitalize(x):
