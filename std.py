@@ -225,7 +225,7 @@ keymap.update({
     'elle less': 'ls ',
     'run L S': 'ls\n',
     'run (S S H | S H)': 'ssh',
-    '(ssh | sh)': 'ssh',
+    '(ssh | sh)': 'ssh ',
     'ack': 'ack ',
     'diff': 'diff ',
     'dot pie': '.py',
