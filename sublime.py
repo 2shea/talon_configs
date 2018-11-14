@@ -87,6 +87,7 @@ keymap = {
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
     'console': Key('ctrl-`'),
+    '[command] pallet': Key('cmd-shift-p'),
     'fullscreen': Key('ctrl-cmd-f'),
     'column one' : Key('alt-cmd-1'),
     'column two': Key('alt-cmd-2'),
