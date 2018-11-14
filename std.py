@@ -218,6 +218,7 @@ keymap.update({
     'space': ' ',
     '[forward] slash': '/',
     'backslash': '\\',
+    '[back] tech': '`',
 
     '(dot dot | dotdot)': '..',
     'cd': 'cd ',
