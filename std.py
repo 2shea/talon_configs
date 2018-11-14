@@ -132,7 +132,7 @@ ctx.vocab = [
 
 keymap = {}
 keymap.update({
-    'phrase <dgndictation> [over]': text,
+    '(phrase | say) <dgndictation> [over]': text,
     'sentence <dgndictation> [over]': sentence_text,
     'comma <dgndictation> [over]': [', ', text],
     'period <dgndictation> [over]': ['. ', sentence_text],
