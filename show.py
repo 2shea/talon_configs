@@ -1,7 +1,7 @@
 import string
 from talon.voice import Context
 from talon.webview import Webview
-from user import std
+from user import basic_keys
 
 ctx = Context('show')
 alphabet_context = Context('alphabet_context')
@@ -36,7 +36,7 @@ td {
 def show_alphabet(_):
 	global alphabet_context
 
-	alphabet = list(zip(std.alpha_alt, string.ascii_lowercase))
+	alphabet = list(zip(basic_keys.alpha_alt, string.ascii_lowercase))
 
 	webview.render(template, alphabet=alphabet)
 	webview.show()

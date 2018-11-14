@@ -3,43 +3,6 @@ from talon import app, ctrl, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
-alpha_alt = 'air bat cap dip each fail gone harm sit jury crash look mad near odd pit quest red sun trap urge vest whale box yes zip'.split()
-alnum = list(zip(alpha_alt, string.ascii_lowercase)) + [(str(i), str(i)) for i in range(0, 10)]
-
-alpha = {}
-alpha.update(dict(alnum))
-alpha.update({'ship %s' % word: letter for word, letter in zip(alpha_alt, string.ascii_uppercase)})
-
-# modifier key mappings
-fkeys = [(f'F {i}', f'f{i}') for i in range(1, 13)]
-keys = [
-    'left', 'right', 'up', 'down', 'shift', 'tab', 'escape', 'enter', 'space',
-    'backspace', 'delete', 'home', 'pageup', 'pagedown', 'end',
-]
-keys = alnum + [(k, k) for k in keys]
-keys += [
-    ('tilde', '`'),
-    ('comma', ','),
-    ('dot', '.'),
-    ('slash', '/'),
-    ('(semi | semicolon)', ';'),
-    ('quote', "'"),
-    ('[left] square', '['),
-    ('(right | are) square', ']'),
-    ('backslash', '\\'),
-    ('minus', '-'),
-    ('equals', '='),
-] + fkeys
-alpha.update({word: Key(key) for word, key in fkeys})
-alpha.update({'control %s' % k: Key('ctrl-%s' % v) for k, v in keys})
-alpha.update({'control shift %s' % k: Key('ctrl-shift-%s' % v) for k, v in keys})
-alpha.update({'control alt %s' % k: Key('ctrl-alt-%s' % v) for k, v in keys})
-alpha.update({'command %s' % k: Key('cmd-%s' % v) for k, v in keys})
-alpha.update({'command shift %s' % k: Key('cmd-shift-%s' % v) for k, v in keys})
-alpha.update({'command alt shift %s' % k: Key('cmd-alt-shift-%s' % v) for k, v in keys})
-alpha.update({'alt %s' % k: Key('alt-%s' % v) for k, v in keys})
-alpha.update({'alt shift %s' % k: Key('alt-%s' % v) for k, v in keys})
-
 # cleans up some Dragon output from <dgndictation>
 mapping = {
     'semicolon': ';',
@@ -168,7 +131,6 @@ ctx.vocab = [
 ]
 
 keymap = {}
-keymap.update(alpha)
 keymap.update({
     'phrase <dgndictation> [over]': text,
     'sentence <dgndictation> [over]': sentence_text,
@@ -179,25 +141,13 @@ keymap.update({
 
     '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
 
-    'tab':   Key('tab'),
-    'left':  Key('left'),
-    'right': Key('right'),
-    'up':    Key('up'),
-    'down':  Key('down'),
-
-    'delete': Key('backspace'),
-
     'slap': [Key('cmd-right enter')],
-    'enter': Key('enter'),
-    'escape': Key('esc'),
     'question [mark]': '?',
     'tilde': '~',
     '(bang | exclamation point)': '!',
     'dollar [sign]': '$',
     '(downscore | underscore)': '_',
-    '(semi | semicolon)': ';',
     'colon': ':',
-    '(square | left square [bracket])': '[', '(rsquare | are square | right square [bracket])': ']',
     '(paren | left paren)': '(', '(rparen | are paren | right paren)': ')',
     '(bracket | brack | left bracket)': '{', '(rbrack | are bracket | right bracket)': '}',
     '(angle | left angle | less than)': '<', '(rangle | are angle | right angle | greater than)': '>',
@@ -211,14 +161,7 @@ keymap.update({
     'pipe': '|',
 
     '(dubquote | double quote)': '"',
-    'quote': "'",
     'triple quote': "'''",
-    '(dot | period)': '.',
-    'comma': ',',
-    'space': ' ',
-    '[forward] slash': '/',
-    'backslash': '\\',
-    '[back] tech': '`',
 
     '(dot dot | dotdot)': '..',
     'cd': 'cd ',
@@ -346,8 +289,6 @@ keymap.update({
     'string utf8': "'utf8'",
     'state past': 'pass',
 
-    'equals': '=',
-    '(minus | dash)': '-',
     'plus': '+',
     'arrow': '->',
     'dub arrow': '=>',
