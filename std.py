@@ -1,5 +1,5 @@
 from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
-from talon import ctrl, clip
+from talon import app, ctrl, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
 
@@ -150,6 +150,11 @@ def FormatText(m):
     if not spaces:
         sep = ''
     Str(sep.join(words))(None)
+
+def copy_bundle(m):
+    bundle = ui.active_app().bundle
+    clip.set(bundle)
+    app.notify('Copied app bundle', body='{}'.format(bundle))
 
 ctx = Context('input')
 
@@ -416,6 +421,8 @@ keymap.update({
     'mute': Key('mute'),
     'next': Key('next'),
     'previous': Key('previous'),
+
+    'copy active bundle': copy_bundle,
 })
 
 keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in range(1,10)})
