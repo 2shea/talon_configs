@@ -400,6 +400,9 @@ keymap.update({
     'next space': Key('cmd-alt-ctrl-right'),
     'last space': Key('cmd-alt-ctrl-left'),
 
+    'zoom [in]': Key('cmd-+'),
+    'zoom out': Key('cmd--'),
+
     'scroll up': Key('pgup'),
     'scroll down': Key('pgdown'),
     'copy': Key('cmd-c'),
