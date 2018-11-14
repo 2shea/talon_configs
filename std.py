@@ -292,7 +292,6 @@ keymap.update({
     'plus': '+',
     'arrow': '->',
     'dub arrow': '=>',
-    'call': '()',
     'indirect': '&',
     'dereference': '*',
     '(op equals | assign)': ' = ',
