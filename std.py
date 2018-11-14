@@ -423,8 +423,8 @@ keymap.update({
     'volume up': Key('volume_up'),
     'volume down': Key('volume_down'),
     'mute': Key('mute'),
-    'next': Key('next'),
-    'previous': Key('previous'),
+    'play next': Key('next'),
+    'play previous': Key('previous'),
 
     'copy active bundle': copy_bundle,
 })
