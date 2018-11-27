@@ -13,6 +13,7 @@ keymap = {
     'split vertical': Key('cmd-d'),
     'next (split | pane)': Key('cmd-]'),
     'last (split | pane)': Key('cmd-['),
+    'max (split | pane)': Key('shift-cmd-enter'),
     'move tab left': Key('shift-cmd-left'),
     'move tab right': Key('shift-cmd-right'),
     '(subble | subtle)': 'subl ',
@@ -20,6 +21,7 @@ keymap = {
     'find': Key('cmd-f'),
     'jump back': Key('ctrl-[ b'),
     'jump [forward]': Key('ctrl-] f'),
+    'rerun': [Key('up'), Key('enter')]
 }
 
 ctx.keymap(keymap)
