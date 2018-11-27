@@ -173,8 +173,8 @@ def show_commands(context):
 
 
 keymap = {
-	'[show] alphabet': show_alphabet,
-	'[show] commands <dgndictation>': find_and_show,
+	'show alphabet': show_alphabet,
+	'show commands <dgndictation>': find_and_show,
 	'show context': show_contexts,
 }
 
