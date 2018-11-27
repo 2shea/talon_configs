@@ -381,5 +381,7 @@ keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in ra
 keymap.update({'right wipe %s' % k: [Key('delete')] * k for k in range(1,10)})
 keymap.update({'jog right %s' % k: [Key('right')] * k for k in range(1,10)})
 keymap.update({'jog left %s' % k: [Key('left')] * k for k in range(1,10)})
+keymap.update({'page up %s' % k: [Key('pgup')] * k for k in range(1,10)})
+keymap.update({'page [down] %s' % k: [Key('pgdown')] * k for k in range(1,10)})
 
 ctx.keymap(keymap)

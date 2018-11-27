@@ -180,5 +180,6 @@ keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range
 keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
 keymap.update({'jump %s' % k: [Key('ctrl-alt-f')] * k for k in range(1,10)})
 keymap.update({'(jump back | jazz) %s' % k: [Key('ctrl-alt-b')] * k for k in range(1,10)})
+keymap.update({'delete word %s' % k: [Key('alt-backspace')] * k for k in range(1,10)})
 
 ctx.keymap(keymap)
