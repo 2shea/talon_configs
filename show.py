@@ -3,7 +3,7 @@ import talon
 from pprint import pprint
 from collections import OrderedDict
 from talon import voice
-from talon.voice import Context
+from talon.voice import Context, Key
 from talon.webview import Webview
 from user import basic_keys
 
@@ -46,7 +46,9 @@ templates = {
 	    padding: 0;
 	    margin: 0;
 	    min-width: 800px;
-	    font-size: 8px;
+	    font-size: 14px;
+	    max-height: 200%;
+	    overflow: auto;
 	}
 	.contents {
 	    width: 100%;
@@ -58,8 +60,8 @@ templates = {
 	    padding-left: 5px;
 	}
 	</style>
-	<h3>commands</h3>
-	<div class="contents">
+	<h3>{{ context_name }} commands</h3>
+	<div class="contents" overflow=scroll max-height=8px>
 	<table>
 	{% for trigger, mapped_to in mapping.items() %}
 	    <tr><td>{{ trigger }}</td><td>{{ mapped_to }}</td></tr>
@@ -140,27 +142,40 @@ def find_and_show(m):
 	if find in voice.talon.subs.keys():
 		show_commands(voice.talon.subs[find])
 
+def format_action(action):
+	if isinstance(action, list):
+		return [ a.data if isinstance(a, talon.voice.Key) else a for a in action ]
+	elif isinstance(action, talon.voice.Key):
+		return action.data
+	elif isinstance(action, str):
+		return action
+	else:
+		return ""
+
 def show_commands(context):
 	# what you say is stored as a trigger
 	mapping = {}
-	for trigger_key in context.triggers.keys():
-		mapped_to = context.mapping[context.triggers[trigger_key]]
-		if isinstance(mapped_to, talon.voice.Key):
-			mapping[trigger_key] = mapped_to.data
-		else:
-			mapping[trigger_key] = mapped_to
+	for trigger in context.triggers.keys():
+		action = context.mapping[context.triggers[trigger]]
+		mapping[trigger] = format_action(action)
 
-	webview_context.keymap({'(0 | quit | exit | escape)': lambda x: close_webview()})
+	keymap = {
+		'(0 | quit | exit | escape)': lambda x: close_webview(),
+		'up': Key('pgup'),
+		'down': Key('pgdown'),
+	}
+
+	webview_context.keymap(keymap)
 	webview_context.load()
 
-	webview.render(templates['commands'], mapping=mapping)
+	webview.render(templates['commands'], context_name=context.name, mapping=mapping)
 	webview.show()
 
 
 keymap = {
 	'[show] alphabet': show_alphabet,
 	'[show] commands <dgndictation>': find_and_show,
-	'[show] context': show_contexts,
+	'show context': show_contexts,
 }
 
 ctx.keymap(keymap)
