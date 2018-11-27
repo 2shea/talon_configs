@@ -17,6 +17,9 @@ mapping = {
     'standard error': 'stderr',
     'keep': 'key',
     'keeper': 'key',
+    'crum': 'chrome',
+    'crump': 'chrome',
+    'laugh': 'waf',
 }
 
 # used for auto-spacing
