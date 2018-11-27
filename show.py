@@ -11,6 +11,7 @@ ctx = Context('show')
 webview_context = Context('webview_context')
 
 webview = Webview()
+# TODO: use a master template
 templates = {
 
 'alpha': '''
@@ -44,6 +45,8 @@ templates = {
 	body {
 	    padding: 0;
 	    margin: 0;
+	    min-width: 800px;
+	    font-size: 8px;
 	}
 	.contents {
 	    width: 100%;
@@ -86,8 +89,8 @@ templates = {
 	<table>
 	{% for index, context in contexts.items() %}
 	    <tr>
-	    	<td>{{ index }}</td><td>{{ context }}</td>
-	    	<td>{% if context in actives %}✅{% else %}❌{%endif %}</td>
+	    	<td>{{ index }}</td><td>{{ context.name }}</td>
+	    	<td>{% if context in actives %}✅{% else %}❌{%endif %} </td>
 	    </tr>
 	{% endfor %}
 	</table>
@@ -96,23 +99,21 @@ templates = {
 }
 
 def show_alphabet(_):
-	global webview_context
-
 	alphabet = list(zip(basic_keys.alpha_alt, string.ascii_lowercase))
+
+	webview_context.keymap({'(0 | quit | exit | escape)': lambda x: close_webview()})
+	webview_context.load()
 
 	webview.render(templates['alpha'], alphabet=alphabet)
 	webview.show()
 
-	keymap = {
-		'(0 | quit | exit | escape)': lambda x: close_webview(),
-	}
-
-	webview_context.keymap(keymap)
-	webview_context.load()
-
 def close_webview():
     webview.hide()
     webview_context.unload()
+
+# needed because of how closures work in Python
+def create_context_mapping(context):
+	return lambda _: show_commands(context)
 
 def show_contexts(_):
 	contexts = OrderedDict()
@@ -121,54 +122,44 @@ def show_contexts(_):
 		'(0 | quit | exit | escape)': lambda x: close_webview(),
 	}
 
+	# grab all contexts and bind each to numbers (only for the webview)
 	for idx, context in enumerate(voice.talon.subs.values()):
 		contexts[idx+1] = context
+		keymap.update({str(idx+1): create_context_mapping(context)})
 
-	for k, v in contexts.items():
-		keymap.update({str(k+1): lambda x: show_commands(v)})
-
-	pprint(keymap)
-
-	# keymap.update({'right wipe %s' % k: [Key('delete')] * k for k in range(1,10)})
-	# keymap.update({'%s' % i: lambda x: show_commands(contexts[i-1]) for i in range(1, len(contexts) + 1)})
+	webview_context.keymap(keymap)
+	webview_context.load()
 
 	webview.render(templates['contexts'], contexts = contexts, actives = voice.talon.active)
 	webview.show()
 	
-	webview_context.keymap(keymap)
-	webview_context.load()
 
+def find_and_show(m):
+	# TODO: figure out how to directly grab the name to use in show_commands…
+	find = m.dgndictation[0]._words[0]
+	if find in voice.talon.subs.keys():
+		show_commands(voice.talon.subs[find])
 
 def show_commands(context):
-	close_webview()
-	pprint(context)
 	# what you say is stored as a trigger
-	# context = voice.talon.subs[context]
 	mapping = {}
 	for trigger_key in context.triggers.keys():
-		# try:
 		mapped_to = context.mapping[context.triggers[trigger_key]]
 		if isinstance(mapped_to, talon.voice.Key):
 			mapping[trigger_key] = mapped_to.data
 		else:
 			mapping[trigger_key] = mapped_to
-		# except:
-		# 	continue
+
+	webview_context.keymap({'(0 | quit | exit | escape)': lambda x: close_webview()})
+	webview_context.load()
 
 	webview.render(templates['commands'], mapping=mapping)
 	webview.show()
 
-	keymap = {
-		'(0 | quit | exit | escape)': lambda x: close_webview(),
-	}
-
-	webview_context.keymap(keymap)
-	webview_context.load()
-
 
 keymap = {
 	'[show] alphabet': show_alphabet,
-	# '[show] commands <dgndictation>': show_commands,
+	'[show] commands <dgndictation>': find_and_show,
 	'[show] context': show_contexts,
 }
 
