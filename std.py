@@ -374,6 +374,7 @@ keymap.update({
     'mute': Key('mute'),
     'play next': Key('next'),
     'play previous': Key('previous'),
+    '(play | pause)': Key('space'), # spotify
 
     'copy active bundle': copy_bundle,
 })
