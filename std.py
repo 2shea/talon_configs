@@ -89,6 +89,8 @@ formatters = {
 
 def FormatText(m):
     fmt = []
+    if m._words[-1] == "over":
+        m._words = m._words[:-1]
     for w in m._words:
         if isinstance(w, Word):
             fmt.append(w.word)
@@ -142,7 +144,7 @@ keymap.update({
     'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
 
-    '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
+    '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
 
     'slap': [Key('cmd-right enter')],
     'question [mark]': '?',
@@ -362,7 +364,6 @@ keymap.update({
     'spotlight': Key('cmd-space'),
     '(undo | under | skunks)': Key('cmd-z'),
     'redo': Key('cmd-shift-z'),
-    'twice': Rep(1),
 
     '(strike | clear | scratch )': Key('cmd-backspace'),
 
