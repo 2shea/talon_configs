@@ -2,30 +2,23 @@ from talon.voice import Context, Rep
 
 ctx = Context("repeater")
 
-ctx.keymap(
-    {
-        "second": Rep(1),
-        "third": Rep(2),
-        "fourth": Rep(3),
-        "fifth": Rep(4),
-        "sixth": Rep(5),
-        "seventh": Rep(6),
-        "eight": Rep(7),
-        "ninth": Rep(8),
-        "tenth": Rep(9),
-        "eleventh": Rep(10),
-        "twelth": Rep(11),
-        "thirteenth": Rep(12),
-        "fourteenth": Rep(13),
-        "fifteenth": Rep(14),
-        "sixteenth": Rep(15),
-        "seventeenth": Rep(16),
-        "eighteenth": Rep(17),
-        "nineteenth": Rep(18),
-        "twentieth": Rep(19),
-        "twentyfirst": Rep(20),
-        "twentysecond": Rep(21),
-        "twentythird": Rep(22),
-        "twentyfourth": Rep(23),
-    }
-)
+def ordinal(n):
+    '''
+    Convert an integer into its ordinal representation::
+        ordinal(0)   => '0th'
+        ordinal(3)   => '3rd'
+        ordinal(122) => '122nd'
+        ordinal(213) => '213th'
+    '''
+    n = int(n)
+    suffix = ['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]
+    if 11 <= (n % 100) <= 13:
+        suffix = 'th'
+    return str(n) + suffix
+
+keymap = {}
+
+for n in range(2,100):
+    keymap[ordinal(n)] = Rep(n-1)
+
+ctx.keymap(keymap)
