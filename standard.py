@@ -124,7 +124,7 @@ def copy_bundle(m):
     clip.set(bundle)
     app.notify('Copied app bundle', body='{}'.format(bundle))
 
-ctx = Context('std')
+ctx = Context('standard')
 
 ctx.vocab = [
     'docker',
