@@ -1,7 +1,7 @@
 from talon.voice import Context, Str, press
 import string
 
-alpha_alt = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split()
+alpha_alt = 'air bat cap dip each fine gone harp sit jury crunch look mad near odd pit quench red sun trap urge vest whale plex yank zip'.split()
 
 f_keys = {f'F {i}': f'f{i}' for i in range(1, 13)}
 # arrows are separated because 'up' has a high false positive rate
@@ -86,7 +86,7 @@ ctx.keymap({
     '{basic_keys.modifiers}* {basic_keys.alphabet}+': press_keys,
     '{basic_keys.modifiers}* {basic_keys.digits}+': press_keys,
     '{basic_keys.modifiers}* {basic_keys.keys}+': press_keys,
-    '(go | {basic_keys.modifiers}+) {basic_keys.arrows}+': press_keys,
+    '[(go | {basic_keys.modifiers}+)] {basic_keys.arrows}+': press_keys,
 })
 ctx.set_list('alphabet', alphabet.keys())
 ctx.set_list('arrows', arrows.keys())

@@ -17,6 +17,9 @@ mapping = {
     'standard error': 'stderr',
     'keep': 'key',
     'keeper': 'key',
+    'crum': 'chrome',
+    'crump': 'chrome',
+    'laugh': 'waf',
 }
 
 # used for auto-spacing
@@ -86,6 +89,8 @@ formatters = {
 
 def FormatText(m):
     fmt = []
+    if m._words[-1] == "over":
+        m._words = m._words[:-1]
     for w in m._words:
         if isinstance(w, Word):
             fmt.append(w.word)
@@ -119,7 +124,7 @@ def copy_bundle(m):
     clip.set(bundle)
     app.notify('Copied app bundle', body='{}'.format(bundle))
 
-ctx = Context('input')
+ctx = Context('standard')
 
 ctx.vocab = [
     'docker',
@@ -139,7 +144,7 @@ keymap.update({
     'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
 
-    '(%s)+ [<dgndictation>]' % (' | '.join(formatters)): FormatText,
+    '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
 
     'slap': [Key('cmd-right enter')],
     'question [mark]': '?',
@@ -192,14 +197,17 @@ keymap.update({
     'run get (R M | remove)': 'git rm ',
     'run get add': 'git add ',
     'run get bisect': 'git bisect ',
-    'run get branch': 'git branch ',
+    'get branch': 'git branch ',
+    'run get branch': 'git branch\n',
     'run get checkout': 'git checkout ',
-    'run get checkout master': 'git checkout master',
+    'get checkout master': 'git checkout master',
+    'run get checkout master': 'git checkout master\n',
     'run get checkout new': 'git checkout -b ',
     'run get clone': 'git clone ',
     'run get commit': 'git commit ',
-    'run get diff': 'git diff ',
-    'run get diff master': 'git diff master',
+    'get diff': 'git diff ',
+    'run get diff': 'git diff\n',
+    'run get diff master': 'git diff master\n',
     'run get fetch': 'git fetch ',
     'run get grep': 'git grep ',
     'run get in it': 'git init ',
@@ -215,8 +223,10 @@ keymap.update({
     'run get reset': 'git reset ',
     'run get reset (had | head)': 'git reset HEAD^',
     'run get show': 'git show ',
-    'run get status': 'git status ',
-    'run get stash': 'git stash ',
+    'get status': 'git status',
+    'run get status': 'git status\n',
+    'get stash': 'git stash ',
+    'run get stash': 'git stash\n',
     'run get stash pop': 'git stash pop',
     'run get tag': 'git tag ',
 
@@ -343,8 +353,8 @@ keymap.update({
     'zoom [in]': Key('cmd-+'),
     'zoom out': Key('cmd--'),
 
-    'scroll up': Key('pgup'),
-    'scroll down': Key('pgdown'),
+    '(page | scroll) up': Key('pgup'),
+    '(page | scroll) [down]': Key('pgdown'),
     'copy': Key('cmd-c'),
     'cut': Key('cmd-x'),
     'paste': Key('cmd-v'),
@@ -354,7 +364,6 @@ keymap.update({
     'spotlight': Key('cmd-space'),
     '(undo | under | skunks)': Key('cmd-z'),
     'redo': Key('cmd-shift-z'),
-    'twice': Rep(1),
 
     '(strike | clear | scratch )': Key('cmd-backspace'),
 
@@ -365,6 +374,7 @@ keymap.update({
     'mute': Key('mute'),
     'play next': Key('next'),
     'play previous': Key('previous'),
+    '(play | pause)': Key('space'), # spotify
 
     'copy active bundle': copy_bundle,
 })
@@ -373,5 +383,7 @@ keymap.update({'wipe [(back | left)] %s' % k: [Key('backspace')] * k for k in ra
 keymap.update({'right wipe %s' % k: [Key('delete')] * k for k in range(1,10)})
 keymap.update({'jog right %s' % k: [Key('right')] * k for k in range(1,10)})
 keymap.update({'jog left %s' % k: [Key('left')] * k for k in range(1,10)})
+keymap.update({'page up %s' % k: [Key('pgup')] * k for k in range(1,10)})
+keymap.update({'page [down] %s' % k: [Key('pgdown')] * k for k in range(1,10)})
 
 ctx.keymap(keymap)

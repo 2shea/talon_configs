@@ -16,7 +16,7 @@ keymap = {
     'channel down': Key('alt-down'),
 
     # Navigation
-    'move focus': Key('ctrl-`'),
+    '(move | next) focus': Key('ctrl-`'),
     'next section': Key('f6'),
     'previous section': Key('shift-f6'),
     'direct messages': Key('cmd-shift-k'),
