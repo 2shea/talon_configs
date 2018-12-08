@@ -145,7 +145,7 @@ keymap.update({
     'more <dgndictation> [over]': [' ', text],
     'word <dgnwords>': word,
 
-    '(%s)+ [<dgndictation>] [over]' % (' | '.join(formatters)): FormatText,
+    '(%s)+ <dgndictation> [over]' % (' | '.join(formatters)): FormatText,
 
     'slap': [Key('cmd-right enter')],
     'question [mark]': '?',
