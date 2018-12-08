@@ -163,7 +163,7 @@ keymap.update({
     'percent [sign]': '%',
     'caret': '^',
     'at sign': '@',
-    '(and sign | ampersand | amper)': '&',
+    '(and sign | ampersand )': '&',
     'pipe': '|',
 
     '(dubquote | double quote)': '"',
