@@ -20,6 +20,7 @@ mapping = {
     'crum': 'chrome',
     'crump': 'chrome',
     'laugh': 'waf',
+    'pearl': 'perl',
 }
 
 # used for auto-spacing
