@@ -8,7 +8,8 @@ from talon.webview import Webview
 from user import basic
 
 ctx = Context('show')
-webview_context = Context('webview_context')
+
+webview_context = Context('web_view')
 
 webview = Webview()
 # TODO: use a master template
@@ -135,12 +136,34 @@ def show_contexts(_):
 	webview.render(templates['contexts'], contexts = contexts, actives = voice.talon.active)
 	webview.show()
 	
+mapping = {
+	'pearl': 'perl',
+	'i term': 'iterm',
+	'lack': 'slack',
+	'chrome': 'googlechrome',
+}
+
+def clean_word(word):
+	# removes some extra stuff added by dragon, e.g. 'I\\pronoun'
+	return str(word).split('\\', 1)[0]
 
 def find_and_show(m):
 	# TODO: figure out how to directly grab the name to use in show_commands…
-	find = m.dgndictation[0]._words[0]
-	if find in voice.talon.subs.keys():
-		show_commands(voice.talon.subs[find])
+	words = [ clean_word(w) for w in m.dgndictation[0]._words]
+
+	find = "".join(words).lower().replace(" ", "")
+	find = mapping.get(find, find)
+
+	contexts = { k.lower(): v for k, v in voice.talon.subs.items() }
+
+	if find in contexts:
+		show_commands(contexts[find])
+		return
+
+	# maybe context name is snake case
+	find = "_".join(words).lower()
+	if find in contexts:
+		show_commands(contexts[find])
 
 def format_action(action):
 	if isinstance(action, list):
@@ -174,7 +197,7 @@ def show_commands(context):
 
 keymap = {
 	'show alphabet': show_alphabet,
-	'show commands <dgndictation>': find_and_show,
+	'show [commands] <dgndictation>': find_and_show,
 	'show context': show_contexts,
 }
 
