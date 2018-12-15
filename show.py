@@ -5,7 +5,7 @@ from collections import OrderedDict
 from talon import voice
 from talon.voice import Context, Key
 from talon.webview import Webview
-from user import basic_keys
+from user import basic
 
 ctx = Context('show')
 webview_context = Context('webview_context')
@@ -101,7 +101,7 @@ templates = {
 }
 
 def show_alphabet(_):
-	alphabet = list(zip(basic_keys.alpha_alt, string.ascii_lowercase))
+	alphabet = list(zip(basic.alpha_alt, string.ascii_lowercase))
 
 	webview_context.keymap({'(0 | quit | exit | escape)': lambda x: close_webview()})
 	webview_context.load()

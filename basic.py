@@ -56,12 +56,12 @@ def insert(s):
 
 def get_modifiers(m):
     try:
-        return [modifiers[mod] for mod in m['basic_keys.modifiers']]
+        return [modifiers[mod] for mod in m['basic.modifiers']]
     except KeyError:
         return []
 
 def get_keys(m):
-    groups = ['basic_keys.keys', 'basic_keys.arrows', 'basic_keys.digits', 'basic_keys.alphabet']
+    groups = ['basic.keys', 'basic.arrows', 'basic.digits', 'basic.alphabet']
     for group in groups:
         try:
             return [keymap[k] for k in m[group]]
@@ -80,13 +80,13 @@ def press_keys(m):
     for k in keys:
         press(k)
 
-ctx = Context('basic_keys')
+ctx = Context('basic')
 ctx.keymap({
-    '(uppercase | ship) {basic_keys.alphabet}+ [(lowercase | sunk)]': uppercase_letters,
-    '{basic_keys.modifiers}* {basic_keys.alphabet}+': press_keys,
-    '{basic_keys.modifiers}* {basic_keys.digits}+': press_keys,
-    '{basic_keys.modifiers}* {basic_keys.keys}+': press_keys,
-    '[(go | {basic_keys.modifiers}+)] {basic_keys.arrows}+': press_keys,
+    '(uppercase | ship) {basic.alphabet}+ [(lowercase | sunk)]': uppercase_letters,
+    '{basic.modifiers}* {basic.alphabet}+': press_keys,
+    '{basic.modifiers}* {basic.digits}+': press_keys,
+    '{basic.modifiers}* {basic.keys}+': press_keys,
+    '[(go | {basic.modifiers}+)] {basic.arrows}+': press_keys,
 })
 ctx.set_list('alphabet', alphabet.keys())
 ctx.set_list('arrows', arrows.keys())
