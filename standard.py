@@ -21,6 +21,11 @@ mapping = {
     'crump': 'chrome',
     'laugh': 'waf',
     'pearl': 'perl',
+    'cash': 'cache',
+    'gage': 'gauge',
+    'scaler': 'scalar',
+    'warren': 'warn',
+    'worn': 'warn'
 }
 
 # used for auto-spacing
