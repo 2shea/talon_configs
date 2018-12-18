@@ -3,7 +3,7 @@ from talon.engine import engine
 from talon.voice import Word, Key, Context, Str, press
 from talon.webview import Webview
 
-from user.std import parse_word
+from user.standard import parse_word
 import os
 
 ########################################################################
