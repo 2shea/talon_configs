@@ -80,9 +80,9 @@ def get_first_word(m):
     return str(m.dgndictation[0]._words[0])
 
 keymap = {
-    'trundle': toggle_comments,
-    'trundle super': Key('cmd-alt-/'),
-    'trundle' + numerals: jump_to_bol_and(toggle_comments), # noop for plain/text
+    '(trundle | comment)': toggle_comments,
+    '(trundle | comment) super': Key('cmd-alt-/'),
+    '(trundle | comment)' + numerals: jump_to_bol_and(toggle_comments), # noop for plain/text
 
     # general
     'sidebar': [Key('cmd-k'), Key('cmd-b')],
@@ -154,7 +154,7 @@ keymap = {
     'sprinkoon' + numerals: jump_to_eol_and(lambda: press('enter')),
     'tab last': Key('cmd-shift-['),
     'tab next': Key('cmd-shift-]'),
-    'paren jump': Key('ctrl-m'),
+    'jump paren': Key('ctrl-m'),
     'dear' + optional_numerals: jump_to_eol_and(lambda: None),
     'smear' + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
     'jump [forward]': Key('ctrl-alt-f'),
