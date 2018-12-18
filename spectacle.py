@@ -19,8 +19,8 @@ keymap = {
 	'spec next': Key('ctrl-alt-cmd-right'),
 	'spec previous': Key('ctrl-alt-cmd-left'),
 
-	'spec next third': Key('ctrl-alt-right'),
-	'spec previous third': Key('ctrl-alt-left'),
+	'spec next slice': Key('ctrl-alt-right'),
+	'spec (previous | last) slice': Key('ctrl-alt-left'),
 
 	'spec grow': Key('ctrl-alt-shift-right'),
 	'spec shrink': Key('ctrl-alt-shift-left'),
