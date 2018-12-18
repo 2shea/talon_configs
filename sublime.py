@@ -11,6 +11,7 @@ numeral_map["oh"] = 0 # synonym for zero
 
 numerals          = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')+'
 optional_numerals = ' (' + ' | '.join(sorted(numeral_map.keys())) + ')*'
+digits = {str(i): str(i) for i in range(100)}
 
 def text_to_number(m):
 
@@ -78,6 +79,18 @@ def snipline():
 
 def get_first_word(m):
     return str(m.dgndictation[0]._words[0])
+
+def get_digits(m):
+    return [digits[dig] for dig in m['sublime.digits']]
+
+def shift_down(m):
+    print(m)
+    try:
+        for digit in get_digits(m):
+            for _ in range(0, int(digit)):
+                press('shift-down')
+    except KeyError: pass
+    return []
 
 keymap = {
     'trundle': toggle_comments,
@@ -169,17 +182,23 @@ keymap = {
     'expression': Key('alt-cmd-r'),
     'case insensitive': Key('alt-cmd-c'),
     'whole word': Key('alt-cmd-w'),
-}
 
-keymap.update({'select down %s' % k: [Key('shift-down')] * k for k in range(1,10)})
-keymap.update({'select up %s' % k: [Key('shift-up')] * k for k in range(1,10)})
-keymap.update({'select right %s' % k: [Key('shift-right')] * k for k in range(1,10)})
-keymap.update({'select left %s' % k: [Key('shift-left')] * k for k in range(1,10)})
-keymap.update({'cursor up %s' % k: [Key('ctrl-shift-up')] * k for k in range(1,10)})
-keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range(1,10)})
-keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
-keymap.update({'jump %s' % k: [Key('ctrl-alt-f')] * k for k in range(1,10)})
-keymap.update({'(jump back | jazz) %s' % k: [Key('ctrl-alt-b')] * k for k in range(1,10)})
-keymap.update({'delete word %s' % k: [Key('alt-backspace')] * k for k in range(1,10)})
+    # '{basic.modifiers}* {basic.digits}+': press_keys,
+    'select down {sublime.digits}+': shift_down,
+}
+ 
+
+ctx.set_list('digits', digits.keys())
+
+# keymap.update({'select down %s' % k: [Key('shift-down')] * k for k in range(1,10)})
+# keymap.update({'select up %s' % k: [Key('shift-up')] * k for k in range(1,10)})
+# keymap.update({'select right %s' % k: [Key('shift-right')] * k for k in range(1,10)})
+# keymap.update({'select left %s' % k: [Key('shift-left')] * k for k in range(1,10)})
+# keymap.update({'cursor up %s' % k: [Key('ctrl-shift-up')] * k for k in range(1,10)})
+# keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range(1,10)})
+# keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
+# keymap.update({'jump %s' % k: [Key('ctrl-alt-f')] * k for k in range(1,10)})
+# keymap.update({'(jump back | jazz) %s' % k: [Key('ctrl-alt-b')] * k for k in range(1,10)})
+# keymap.update({'delete word %s' % k: [Key('alt-backspace')] * k for k in range(1,10)})
 
 ctx.keymap(keymap)

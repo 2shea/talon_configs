@@ -1,5 +1,8 @@
+import plistlib
 import string
+import subprocess
 import talon
+import re
 from pprint import pprint
 from collections import OrderedDict
 from talon import voice
@@ -43,12 +46,14 @@ templates = {
 ,
 'commands': '''
 	<style type="text/css">
+	html {
+		height: 100%;
+	}
 	body {
 	    padding: 0;
 	    margin: 0;
-	    min-width: 800px;
 	    font-size: 14px;
-	    max-height: 200%;
+	    max-height: 100%;
 	    overflow: auto;
 	}
 	.contents {
@@ -191,6 +196,11 @@ def show_commands(context):
 	webview_context.keymap(keymap)
 	webview_context.load()
 
+	# ignore issues if something's wrong getting monitor dimensions
+	# try:
+	webview.resize(x=20, y=20, w=int(display_width)-40, h=int(display_height)-40)
+	# except:
+	# 	pass
 	webview.render(templates['commands'], context_name=context.name, mapping=mapping)
 	webview.show()
 
@@ -202,3 +212,15 @@ keymap = {
 }
 
 ctx.keymap(keymap)
+
+def get_monitor():
+	displays = subprocess.check_output(["system_profiler", "-xml", "SPDisplaysDataType"])
+	property_list_items = plistlib.loads(displays)[0]["_items"]
+	for item in property_list_items:
+		for driver in item["spdisplays_ndrvs"]:
+			if "spdisplays_main" in driver:
+				resolution = driver["_spdisplays_resolution"]
+				matched = re.match("(\d.*) x (\d.*)", resolution)
+				return matched.groups()
+
+display_width, display_height = get_monitor()
