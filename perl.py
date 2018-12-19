@@ -19,5 +19,6 @@ ctx.keymap({
     'see pan (m | em | minus)': 'cpanm ',
     '(warren | worn | warn)': 'warn',
     'use pragmas': 'use strict;\nuse warnings;\n',
+    'use dumper': 'use Data::Dumper;',
 })
 
