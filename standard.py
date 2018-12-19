@@ -219,7 +219,7 @@ keymap.update({
     'run get fetch': 'git fetch\n',
     'run get grep': 'git grep ',
     'run get in it': 'git init ',
-    'get log': 'git log',
+    'get log': 'git log ',
     'run get log': 'git log\n',
     'run get merge': 'git merge ',
     'run get move': 'git mv ',
