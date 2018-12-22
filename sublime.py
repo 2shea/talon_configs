@@ -144,7 +144,7 @@ keymap = {
     '(scrap | scratch | delete) word': Key('alt-backspace'),
     '(scrap | scratch | delete) (begin | start)': Key('cmd-backspace'),
     '(scrap | scratch | delete) end': [Key('cmd-k'), Key('cmd-k')],
-    '(upper | uppercase | upcase)': [Key('cmd-k'), Key('cmd-u')],
+    '(uppercase | upcase)': [Key('cmd-k'), Key('cmd-u')],
     '(lower | lowercase | downcase)': [Key('cmd-k'), Key('cmd-l')],
 
     # navigation
