@@ -137,6 +137,7 @@ ctx.vocab = [
     'docker',
     'talon',
     'pragma',
+    'pragmas',
     'vim',
     'configs',
     'spotify',
