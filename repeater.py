@@ -2,6 +2,8 @@ from talon.voice import Context, Rep
 
 ctx = Context("repeater")
 
+ordinals = {}
+
 def ordinal(n):
     '''
     Convert an integer into its ordinal representation::
@@ -16,9 +18,21 @@ def ordinal(n):
         suffix = 'th'
     return str(n) + suffix
 
-keymap = {}
-
 for n in range(2,100):
-    keymap[ordinal(n)] = Rep(n-1)
+    ordinals[ordinal(n)] = n-1
 
-ctx.keymap(keymap)
+ctx.set_list('ordinals', ordinals.keys())
+
+
+def r(n):
+    return lambda _: Rep(n)
+
+def repeat(m):
+    print(m['repeater.ordinals'][0])
+    o = m['repeater.ordinals'][0]
+    print(ordinals[o])
+    return r(o)
+
+ctx.keymap({
+    '{repeater.ordinals}': repeat,
+})
