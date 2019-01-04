@@ -25,7 +25,8 @@ mapping = {
     'gage': 'gauge',
     'scaler': 'scalar',
     'warren': 'warn',
-    'worn': 'warn'
+    'worn': 'warn',
+    'carl': 'curl',
 }
 
 # used for auto-spacing
@@ -136,6 +137,7 @@ ctx.vocab = [
     'docker',
     'talon',
     'pragma',
+    'pragmas',
     'vim',
     'configs',
     'spotify',
