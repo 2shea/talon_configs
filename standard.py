@@ -27,6 +27,7 @@ mapping = {
     'warren': 'warn',
     'worn': 'warn',
     'carl': 'curl',
+    'bcl': 'vcl',
 }
 
 # used for auto-spacing
@@ -355,8 +356,8 @@ keymap.update({
     'new window': Key('cmd-n'),
     'next window': Key('cmd-`'),
     'last window': Key('cmd-shift-`'),
-    'next app': Key('cmd-tab'),
-    'last app': Key('cmd-shift-tab'),
+    # 'next app': Key('cmd-tab'),
+    # 'last app': Key('cmd-shift-tab'),
     'next tab': Key('ctrl-tab'),
     'new tab': Key('cmd-t'),
     'last tab': Key('ctrl-shift-tab'),
@@ -379,7 +380,7 @@ keymap.update({
     '(undo | under | skunks)': Key('cmd-z'),
     'redo': Key('cmd-shift-z'),
 
-    '(strike | clear | scratch )': Key('cmd-backspace'),
+    '(crap | clear | scratch )': Key('cmd-backspace'),
 
     'more bright': Key('brightness_up'),
     'less bright': Key('brightness_down'),
