@@ -5,7 +5,7 @@ from collections import OrderedDict
 from talon import voice
 from talon.voice import Context, Key
 from talon.webview import Webview
-from user import basic
+from . import basic
 
 ctx = Context('show')
 
