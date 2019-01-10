@@ -3,9 +3,13 @@ from talon import ui
 
 apps = {}
 
+overrides = {
+    'from': 'Google Chrome',
+}
 
 def switch_app(m):
     name = str(m._words[1])
+
     full = apps.get(name)
     if not full:
         return
@@ -31,6 +35,8 @@ def update_lists():
             if word and not word in new:
                 new[word] = app.name
         new[app.name] = app.name
+    for override in overrides:
+        new[override] = overrides[override]
     if set(new.keys()) == set(apps.keys()):
         return
     ctx.set_list('apps', new.keys())
