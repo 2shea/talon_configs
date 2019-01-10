@@ -211,7 +211,7 @@ keymap.update({
     'get checkout': 'git checkout ',
     'get checkout master': 'git checkout master',
     'run get checkout master': 'git checkout master\n',
-    'run get checkout new': 'git checkout -b ',
+    '[run] get checkout new': 'git checkout -b ',
     'run get clone': 'git clone ',
     'get commit': 'git commit ',
     'run get commit': 'git commit\n',
