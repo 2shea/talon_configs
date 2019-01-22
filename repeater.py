@@ -1,3 +1,15 @@
+'''
+This module contains generic repeat commands that can be used following any
+other command, e.g. "go down" or "delete" x many times. The repeat commands are
+the ordinal representation of the total number of times to execute the
+command, so "go down 4th" will go down 4 times.
+
+A few reasons to use ordinals:
+- Regular numbers are already heavily used
+- Made up words are difficult to learn and remember
+- Ordinals don't need to be memorized
+- Ordinals are not likely to collide with other commands
+'''
 from talon.voice import Context, Rep, talon
 
 ctx = Context("repeater")
