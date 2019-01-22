@@ -1,4 +1,4 @@
-from talon.voice import Context, Rep
+from talon.voice import Context, Rep, talon
 
 ctx = Context("repeater")
 
@@ -23,15 +23,11 @@ for n in range(2,100):
 
 ctx.set_list('ordinals', ordinals.keys())
 
-
-def r(n):
-    return lambda _: Rep(n)
-
 def repeat(m):
-    print(m['repeater.ordinals'][0])
     o = m['repeater.ordinals'][0]
-    print(ordinals[o])
-    return r(o)
+    repeater = Rep(int(ordinals[o]))
+    repeater.ctx = talon
+    return repeater(None)
 
 ctx.keymap({
     '{repeater.ordinals}': repeat,
