@@ -247,6 +247,8 @@ keymap.update({
     'run get stash': 'git stash\n',
     'run get stash pop': 'git stash pop',
     'run get tag': 'git tag ',
+    'run get rev parse (had | head)': 'git rev-parse HEAD',
+    'run get last commit': 'git rev-parse HEAD\n',
 
     'const': 'const ',
     'static': 'static ',
