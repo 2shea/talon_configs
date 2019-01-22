@@ -1,6 +1,20 @@
-from talon.voice import Context, Rep
+'''
+This module contains generic repeat commands that can be used following any
+other command, e.g. "go down" or "delete" x many times. The repeat commands are
+the ordinal representation of the total number of times to execute the
+command, so "go down 4th" will go down 4 times.
+
+A few reasons to use ordinals:
+- Regular numbers are already heavily used
+- Made up words are difficult to learn and remember
+- Ordinals don't need to be memorized
+- Ordinals are not likely to collide with other commands
+'''
+from talon.voice import Context, Rep, talon
 
 ctx = Context("repeater")
+
+ordinals = {}
 
 def ordinal(n):
     '''
@@ -16,9 +30,17 @@ def ordinal(n):
         suffix = 'th'
     return str(n) + suffix
 
-keymap = {}
-
 for n in range(2,100):
-    keymap[ordinal(n)] = Rep(n-1)
+    ordinals[ordinal(n)] = n-1
 
-ctx.keymap(keymap)
+ctx.set_list('ordinals', ordinals.keys())
+
+def repeat(m):
+    o = m['repeater.ordinals'][0]
+    repeater = Rep(int(ordinals[o]))
+    repeater.ctx = talon
+    return repeater(None)
+
+ctx.keymap({
+    '{repeater.ordinals}': repeat,
+})
