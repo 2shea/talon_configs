@@ -11,7 +11,7 @@ simple_keys = [
     'home', 'pageup', 'pagedown', 'end',
 ]
 alternate_keys = {
-    'delete': 'backspace',
+    '(delete | wipe)': 'backspace',
     'forward delete': 'delete',
 }
 symbols = {
