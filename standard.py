@@ -397,6 +397,7 @@ keymap.update({
     '(play | pause)': Key('space'), # spotify
 
     'copy active bundle': copy_bundle,
+    'wipe': Key('backspace'),
 })
 
 ctx.keymap(keymap)
