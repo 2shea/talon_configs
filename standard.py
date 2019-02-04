@@ -145,6 +145,7 @@ ctx.vocab = [
     'vim',
     'configs',
     'spotify',
+    'upsert',
 ]
 
 keymap = {}
