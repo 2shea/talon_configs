@@ -425,8 +425,6 @@ ctx.keymap(
         "open dictionary": Key("cmd+shift+y"),
         "word count": Key("cmd+shift+c"),
         "start voice typing": Key("cmd+shift+s"),
-        "page up": Key("pageup"),
-        "page down": Key("pagedown"),
         "move to next misspelling": Key("cmd+'"),
         "move to (previous | prev) misspelling": Key("cmd+;"),
         "insert or move to header": lambda m: (
