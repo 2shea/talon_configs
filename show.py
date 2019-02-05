@@ -141,6 +141,7 @@ mapping = {
 	'i term': 'iterm',
 	'lack': 'slack',
 	'chrome': 'googlechrome',
+	'get': 'git',
 }
 
 def clean_word(word):
