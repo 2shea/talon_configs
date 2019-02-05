@@ -5,7 +5,6 @@ from talon import ctrl
 
 
 def context(app, win):
-    # print(win.title)
     return win.title.endswith("- Google Docs") or "- Google Docs -" in win.title
 
 
@@ -16,8 +15,6 @@ ctx.keymap(
         "cut": Key("cmd+x"),
         "paste": Key("cmd+v"),
         "paste without formatting": Key("cmd+shift+v"),
-        "undo": Key("cmd+z"),
-        "redo": Key("cmd+shift+z"),
         "(insert | edit) link": Key("cmd+k"),
         "open link": Key("alt+enter"),
         "[show] [common] keyboard shortcuts": Key("cmd+/"),
