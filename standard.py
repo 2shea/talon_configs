@@ -32,6 +32,7 @@ mapping = {
     'carl': 'curl',
     'bcl': 'vcl',
     'tubal': 'tuple',
+    'vastly': 'fastly',
 }
 
 # used for auto-spacing
