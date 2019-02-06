@@ -31,6 +31,7 @@ mapping = {
     'worn': 'warn',
     'carl': 'curl',
     'bcl': 'vcl',
+    'tubal': 'tuple',
 }
 
 # used for auto-spacing
