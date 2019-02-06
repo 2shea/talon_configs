@@ -171,15 +171,4 @@ keymap = {
     'whole word': Key('alt-cmd-w'),
 }
 
-keymap.update({'select down %s' % k: [Key('shift-down')] * k for k in range(1,10)})
-keymap.update({'select up %s' % k: [Key('shift-up')] * k for k in range(1,10)})
-keymap.update({'select right %s' % k: [Key('shift-right')] * k for k in range(1,10)})
-keymap.update({'select left %s' % k: [Key('shift-left')] * k for k in range(1,10)})
-keymap.update({'cursor up %s' % k: [Key('ctrl-shift-up')] * k for k in range(1,10)})
-keymap.update({'cursor down %s' % k: [Key('ctrl-shift-down')] * k for k in range(1,10)})
-keymap.update({'select word %s' % k: [Key('cmd-d')] * k for k in range(1,10)})
-keymap.update({'jump %s' % k: [Key('ctrl-alt-f')] * k for k in range(1,10)})
-keymap.update({'(jump back | jazz) %s' % k: [Key('ctrl-alt-b')] * k for k in range(1,10)})
-keymap.update({'delete word %s' % k: [Key('alt-backspace')] * k for k in range(1,10)})
-
 ctx.keymap(keymap)
