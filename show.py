@@ -167,14 +167,33 @@ def find_and_show(m):
 		show_commands(contexts[find])
 
 def format_action(action):
-	if isinstance(action, list):
-		return [ a.data if isinstance(a, talon.voice.Key) else a for a in action ]
-	elif isinstance(action, talon.voice.Key):
-		return action.data
-	elif isinstance(action, str):
-		return action
-	else:
-		return ""
+	actions = action if isinstance(action, (list,tuple)) else [action]
+
+	pretty = []
+	for action in actions:
+		if isinstance(action, talon.voice.Key):
+			keys = action.data.split(' ')
+			if len(keys) > 1 and len(set(keys)) == 1:
+				pretty.append(f'key({keys[0]}) * {len(keys)}')
+			else:
+				pretty.append(f'key({action.data})')
+		elif isinstance(action, talon.voice.Str):
+			pretty.append(f'"{action.data}"')
+		elif isinstance(action, talon.voice.Rep):
+			pretty.append(f'"{action.data}"')
+		elif isinstance(action, voice.RepPhrase):
+			pretty.append(f'repeat_phrase({action.data})')
+		elif isinstance(action, str):
+			pretty.append(f'"{action}"')
+		elif callable(action):
+			pretty.append(f'{action.__name__}()')
+		else:
+			pretty.append(str(action))
+
+	if len(pretty) == 1:
+		pretty = pretty[0]
+
+	return pretty
 
 def show_commands(context):
 	# what you say is stored as a trigger
