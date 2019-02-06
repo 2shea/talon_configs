@@ -2,52 +2,30 @@ import string
 import talon
 from pprint import pprint
 from collections import OrderedDict
-from talon import voice
+from talon import voice, ui
 from talon.voice import Context, Key
 from talon.webview import Webview
 from . import basic
+
+# reusable constant for font size (in pixels), to use in calculations
+FONT_SIZE = 12
+# border spacing, in pixels
+BORDER_SIZE = 2
 
 ctx = Context('show')
 
 webview_context = Context('web_view')
 
 webview = Webview()
-# TODO: use a master template
-templates = {
 
-'alpha': '''
-	<style type="text/css">
+css_template = '''
+<style type="text/css">
 	body {
 	    padding: 0;
 	    margin: 0;
-	}
-	.contents {
-	    width: 100%;
-	}
-	td {
-	    text-align: left;
-	    margin: 0;
-	    padding: 0;
-	    padding-left: 5px;
-	}
-	</style>
-	<h3>alphabet</h3>
-	<div class="contents">
-	<table>
-	{% for word, letter in alphabet %}
-	    <tr><td>{{ letter }}</td><td>{{ word }}</td></tr>
-	{% endfor %}
-	</table>
-	</div>
-	'''
-,
-'commands': '''
-	<style type="text/css">
-	body {
-	    padding: 0;
-	    margin: 0;
-	    min-width: 800px;
-	    font-size: 14px;
+	    font-size: ''' + str(FONT_SIZE) + '''px;
+	    -webkit-border-vertical-spacing: ''' + str(BORDER_SIZE) + '''px;
+	    -webkit-border-horizontal-spacing: ''' + str(BORDER_SIZE) + '''px;
 	    max-height: 200%;
 	    overflow: auto;
 	}
@@ -60,40 +38,51 @@ templates = {
 	    padding: 0;
 	    padding-left: 5px;
 	}
-	</style>
-	<h3>{{ context_name }} commands</h3>
-	<div class="contents" overflow=scroll max-height=8px>
+	footer {
+		background-color: #696969;
+		color: white;
+		font-weight: bold;
+	}
+</style>
+'''
+
+# TODO: use a master template
+templates = {
+'alpha': css_template + '''
+	<h3>alphabet</h3>
+	<div class="contents">
 	<table>
-	{% for trigger, mapped_to in mapping.items() %}
-	    <tr><td>{{ trigger }}</td><td>{{ mapped_to }}</td></tr>
+	{% for word, letter in alphabet %}
+	    <tr><td>{{ letter }}</td><td>{{ word }}</td></tr>
 	{% endfor %}
 	</table>
 	</div>
 	'''
 ,
-'contexts': '''
-	<style type="text/css">
-	body {
-	    padding: 0;
-	    margin: 0;
-	}
-	.contents {
-	    width: 100%;
-	}
-	td {
-	    text-align: left;
-	    margin: 0;
-	    padding: 0;
-	    padding-left: 5px;
-	}
-	</style>
+'commands': css_template + '''
+	<h3>{{ context_name }} commands</h3>
+	<div class="contents" overflow=scroll max-height=8px>
+	<table>
+	{% for trigger, mapped_to in mapping %}
+	    <tr><td>{{ trigger }}</td><td>{{ mapped_to }}</td></tr>
+	{% endfor %}
+	</table>
+	<footer>
+	{% if current_page %}
+		page {{ current_page }} of {{ total_pages }}
+	{% endif %}
+	</footer>
+	</div>
+	'''
+,
+'contexts': css_template + '''
 	<h3>contexts</h3>
 	<div class="contents">
 	<table>
 	{% for index, context in contexts.items() %}
 	    <tr>
 	    	<td>{{ index }}</td><td>{{ context.name }}</td>
-	    	<td>{% if context in actives %}✅{% else %}❌{%endif %} </td>
+	    	<td>{% if context in actives %}✅{% else %}❌{% endif %} </td>
 	    </tr>
 	{% endfor %}
 	</table>
@@ -197,21 +186,48 @@ def format_action(action):
 
 def show_commands(context):
 	# what you say is stored as a trigger
-	mapping = {}
+	# TODO: switch to list of tuples to simplify paging?
+	# mapping = {}
+	mapping = []
 	for trigger in context.triggers.keys():
 		action = context.mapping[context.triggers[trigger]]
-		mapping[trigger] = format_action(action)
+		# mapping[trigger] = format_action(action)
+		mapping.append((trigger, format_action(action),))
 
 	keymap = {
 		'(0 | quit | exit | escape)': lambda x: close_webview(),
 		'up': Key('pgup'),
 		'down': Key('pgdown'),
 	}
-
 	webview_context.keymap(keymap)
 	webview_context.load()
 
-	webview.render(templates['commands'], context_name=context.name, mapping=mapping)
+	main = ui.main_screen().visible_rect
+
+	# need to account for header and footer / pagination links, hence '-2'
+	max_items = int(main.height // (FONT_SIZE + 2 * BORDER_SIZE) - 2)
+	if len(mapping) >= max_items:
+		# use all visible space
+		webview.resize(x=main.x, y=main.y, w=main.width, h=main.height)
+		# TODO: need other pages, requires a 'next page' keyword
+		# pagemap = {}
+		# idx = 0
+		# for idx, k in enumerate(mapping):
+		# 	if idx < max_items:
+		# 		pagemap[k] = mapping[k]
+		# 	else:
+		# 		break
+		webview.render(templates['commands'], 
+			context_name=context.name, 
+			mapping=mapping[:max_items],
+			current_page=1,
+			total_pages=int(len(mapping) // max_items)
+		)
+	else:
+		view_height = (len(mapping) + 2) * FONT_SIZE
+
+		webview.resize(x=main.x, y=(main.height-view_height)/2, w=main.width, h=view_height)
+		webview.render(templates['commands'], context_name=context.name, mapping=mapping)
 	webview.show()
 
 
