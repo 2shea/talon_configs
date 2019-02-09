@@ -200,11 +200,9 @@ def create_render_page(context, items, current_page, total_pages):
 def show_commands(context):
 	# what you say is stored as a trigger
 	# TODO: switch to list of tuples to simplify paging?
-	# mapping = {}
 	mapping = []
 	for trigger in context.triggers.keys():
 		action = context.mapping[context.triggers[trigger]]
-		# mapping[trigger] = format_action(action)
 		mapping.append((trigger, format_action(action),))
 
 	keymap = {
@@ -233,8 +231,6 @@ def show_commands(context):
 
 		for idx, items in enumerate(pages):# items = mapping[((page-1)*max_items):((page)*max_items)]
 			page = idx + 1
-			print("PAGE: ")
-			print(page)
 			keymap.update({'page ' + str(page): create_render_page(context, items, page, total_pages)})
 
 		render_page(context, pages[0], 1, total_pages)
