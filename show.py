@@ -131,6 +131,8 @@ mapping = {
 	'lack': 'slack',
 	'chrome': 'googlechrome',
 	'get': 'git',
+	'docs': 'googledocs',
+	'google docs': 'googledocs',
 }
 
 def clean_word(word):
@@ -184,6 +186,17 @@ def format_action(action):
 
 	return pretty
 
+def render_page(context, mapping, current_page, total_pages):
+	webview.render(templates['commands'],
+		context_name=context.name,
+		mapping=mapping,
+		current_page=current_page,
+		total_pages=total_pages
+	)
+
+def create_render_page(context, items, current_page, total_pages):
+	return lambda _: render_page(context, items, current_page, total_pages)
+
 def show_commands(context):
 	# what you say is stored as a trigger
 	# TODO: switch to list of tuples to simplify paging?
@@ -199,35 +212,40 @@ def show_commands(context):
 		'up': Key('pgup'),
 		'down': Key('pgdown'),
 	}
-	webview_context.keymap(keymap)
-	webview_context.load()
 
 	main = ui.main_screen().visible_rect
 
 	# need to account for header and footer / pagination links, hence '-2'
 	max_items = int(main.height // (FONT_SIZE + 2 * BORDER_SIZE) - 2)
+
 	if len(mapping) >= max_items:
 		# use all visible space
 		webview.resize(x=main.x, y=main.y, w=main.width, h=main.height)
-		# TODO: need other pages, requires a 'next page' keyword
-		# pagemap = {}
-		# idx = 0
-		# for idx, k in enumerate(mapping):
-		# 	if idx < max_items:
-		# 		pagemap[k] = mapping[k]
-		# 	else:
-		# 		break
-		webview.render(templates['commands'], 
-			context_name=context.name, 
-			mapping=mapping[:max_items],
-			current_page=1,
-			total_pages=int(len(mapping) // max_items)
-		)
+
+		total_pages = int(len(mapping) // max_items)
+		if (len(mapping) % max_items > 0):
+			total_pages += 1
+
+		pages = []
+
+		for page in range(1, total_pages+1):
+			pages.append(mapping[((page-1)*max_items):((page)*max_items)])
+
+		for idx, items in enumerate(pages):# items = mapping[((page-1)*max_items):((page)*max_items)]
+			page = idx + 1
+			print("PAGE: ")
+			print(page)
+			keymap.update({'page ' + str(page): create_render_page(context, items, page, total_pages)})
+
+		render_page(context, pages[0], 1, total_pages)
 	else:
 		view_height = (len(mapping) + 2) * FONT_SIZE
 
 		webview.resize(x=main.x, y=(main.height-view_height)/2, w=main.width, h=view_height)
 		webview.render(templates['commands'], context_name=context.name, mapping=mapping)
+
+	webview_context.keymap(keymap)
+	webview_context.load()
 	webview.show()
 
 

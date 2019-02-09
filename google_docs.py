@@ -8,7 +8,7 @@ def context(app, win):
     return win.title.endswith("- Google Docs") or "- Google Docs -" in win.title
 
 
-ctx = Context("google_docs", func=context)
+ctx = Context("googledocs", func=context)
 ctx.keymap(
     {
         "copy": Key("cmd+c"),
