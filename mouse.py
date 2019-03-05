@@ -86,7 +86,7 @@ def mouse_release(m):
 
 
 keymap = {
-    "amp": Key('alt-cmd-8'),
+    "amp": Key("alt-cmd-8"),
     # jsc modified with some voice-code compatibility
     "righty": delayed_right_click,
     "(click | chiff)": delayed_click,
