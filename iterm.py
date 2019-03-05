@@ -21,7 +21,9 @@ keymap = {
     'find': Key('cmd-f'),
     'jump back': Key('ctrl-[ b'),
     'jump [forward]': Key('ctrl-] f'),
-    'rerun': [Key('up'), Key('enter')]
+    'rerun': [Key('up'), Key('enter')],
+    'sky': Key('cmd-ctrl-pageup'),
+    'floor': Key('cmd-ctrl-pagedown'),
 }
 
 ctx.keymap(keymap)
