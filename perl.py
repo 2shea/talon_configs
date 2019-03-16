@@ -10,13 +10,14 @@ def perl(app, win):
 
 ctx = Context("perl", func=perl)
 
-ctx.vocab = ["params", "perltidy", "undef", "perl", "diag", "plack"]
+ctx.vocab = ["params", "perltidy", "githook", "undef", "perl", "diag", "plack", "rehash"]
 
 ctx.keymap(
     {
         "log for pearl": "Log4perl",
+        "perl env": "plenv ",
         "see pan (m | em | minus)": "cpanm ",
-        "(warren | worn | warn)": "warn",
+        "(warren | worn | warn)": "warn ",
         "use pragmas": "use strict;\nuse warnings;\n",
         "use dumper": "use Data::Dumper;",
     }
