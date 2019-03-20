@@ -45,5 +45,6 @@ ctx.keymap(
         "perl (uppercase | upcase | upper)": "uc ",
         "perl map": "map ",
         "perl (exclusive | ex) or": " xor ",
+        "op [perl] (diamond | input)": ["<>", Key("left")],
     }
 )
