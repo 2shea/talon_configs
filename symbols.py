@@ -31,6 +31,7 @@ context.keymap(
         "arrow": "->",
         "dub arrow": "=>",
         "op dub": " => ",
+        "(op | pad) colon": " : ",
         "indirect": "&",
         "dereference": "*",
         "(op equals | assign)": " = ",
