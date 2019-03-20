@@ -104,7 +104,7 @@ keymap = {
     "column two": Key("alt-cmd-2"),
     "column three": Key("alt-cmd-3"),
     # window
-    # new window
+    "(subl | sublime) new window": Key("shift-cmd-n"),
     # close window
     # file
     "new file": Key("cmd-n"),
