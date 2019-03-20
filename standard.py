@@ -216,8 +216,8 @@ keymap.update(
         "tip float": "float ",
         "tip double": "double ",
         "args": ["()", Key("left")],
-        "index": ["[]", Key("left")],
-        "block": [" {}", Key("left enter enter up tab")],
+        "(index | array)": ["[]", Key("left")],
+        "block": ["{}", Key("left enter enter up tab")],
         "empty array": "[]",
         "empty dict": "{}",
         "state (def | deaf | deft)": "def ",
@@ -294,6 +294,7 @@ keymap.update(
         "(play | pause)": Key("space"),  # spotify
         "copy active bundle": copy_bundle,
         "wipe": Key("backspace"),
+        "(pad | padding ) ": ["  ", Key("left")],
     }
 )
 
