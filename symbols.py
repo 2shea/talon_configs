@@ -22,7 +22,7 @@ context.keymap(
         "caret": "^",
         "at sign": "@",
         "(and sign | ampersand )": "&",
-        "pipe": "|",
+        # "pipe": "|",
         "(dubquote | double quote)": '"',
         "triple quote": "'''",
         "(dot dot | dotdot)": "..",
