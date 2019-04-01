@@ -1,7 +1,7 @@
 from talon.voice import Context, Str, press
 import string
 
-alpha_alt = "air bat cap dip each fine gone harp sit jury crunch look mad near odd pit quench red sun trap urge vest whale plex yank zip".split()
+alpha_alt = "air bat cap dip each far gone harp sit jury crunch look mad near odd pit quench red sun trap urge vest whale plex yank zip".split()
 
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
 # arrows are separated because 'up' has a high false positive rate
