@@ -46,5 +46,6 @@ ctx.keymap(
         "perl map": "map ",
         "perl (exclusive | ex) or": " xor ",
         "op [perl] (diamond | input)": ["<>", Key("left")],
+        "perl times": " x ",
     }
 )
