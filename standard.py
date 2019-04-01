@@ -191,6 +191,7 @@ keymap.update(
         "ack": "ack ",
         "diff": "diff ",
         "dot pie": ".py",
+        "run vim": "vim ",
         "run make": "make\n",
         "run jobs": "jobs\n",
         "run make (durr | dear)": "mkdir ",
