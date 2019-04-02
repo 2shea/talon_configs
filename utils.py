@@ -30,6 +30,7 @@ mapping = {
 # used for auto-spacing
 punctuation = set(".,-!?")
 
+
 def parse_word(word):
     word = str(word).lstrip("\\").split("\\", 1)[0]
     word = mapping.get(word.lower(), word)
@@ -76,5 +77,3 @@ def surround(by):
         return word
 
     return func
-
-
