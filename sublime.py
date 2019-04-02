@@ -20,20 +20,20 @@ keymap = {
     "go file": Key("cmd-t"),
     # selection
     "(select line | shackle)": Key("cmd-l"),
-    "select word": Key("cmd-d"),
+    "(select | cell) word": Key("cmd-d"),
     "all word": Key("cmd-ctrl-g"),  # expand currently selected word to all occurances
-    "select current": Key("ctrl-cmd-g"),  # select all occurrences of current selection
-    "select scope": Key("shift-cmd-space"),
-    "select (bracket | paren)": Key("ctrl-shift-m"),
+    "(select | cell) current": Key("ctrl-cmd-g"),  # select all occurrences of current selection
+    "(select | cell) scope": Key("shift-cmd-space"),
+    "(select | cell) (bracket | paren)": Key("ctrl-shift-m"),
     "bracken": [Key("ctrl-shift-m")],
-    "select indent": Key("shift-cmd-j"),
+    "(select | cell) indent": Key("shift-cmd-j"),
     "cursor up": Key("ctrl-shift-up"),
     "cursor down": Key("ctrl-shift-down"),
     "cursor push": Key("cmd-shift-l"),
     "cursor pop": [Key("cmd-shift-l"), Key("cmd-left")],
     "(cursor | select) undo": Key("cmd-u"),
     "undo (select | cursor)": Key("cmd-u"),
-    "select sky": Key("ctrl-shift-up"),
+    "(select | cell) sky": Key("ctrl-shift-up"),
     "bounce [right]": Key("ctrl-alt-shift-right"),
     "bound": Key("ctrl-alt-shift-left"),
     "bounce (left | back)": Key("ctrl-alt-shift-left"),

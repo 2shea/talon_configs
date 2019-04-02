@@ -106,14 +106,14 @@ keymap = {
 	"close (file | tab)": Key("cmd-w"),
 
 	# selection
-	"select up": Key("shift-up"),
-	"select down": Key("shift-down"),
-	"select all": Key("cmd-a"),
-	"select bottom ": Key("cmd-shift-down"),
-	"select right": Key("shift-right"),
-	"select left": Key("shift-left"),
-	"select (end | push)": Key("cmd-shift-right"),
-	"select (start | begin | pop)": Key("cmd-shift-left"),
+	"(select | cell) up": Key("shift-up"),
+	"(select | cell) down": Key("shift-down"),
+	"(select | cell) all": Key("cmd-a"),
+	"(select | cell) bottom ": Key("cmd-shift-down"),
+	"(select | cell) right": Key("shift-right"),
+	"(select | cell) left": Key("shift-left"),
+	"(select | cell) (end | push)": Key("cmd-shift-right"),
+	"(select | cell) (start | begin | pop)": Key("cmd-shift-left"),
 
 	# edit
 	"paste match": Key("cmd-shift-v"),
