@@ -1,4 +1,5 @@
 from talon.voice import Key, press, Str, Context
+from .utils import parse_word
 
 ctx = Context("generic_editor")
 
@@ -29,11 +30,6 @@ def text_to_number(m):
         factor = 10 * factor
 
     return result
-
-
-def parse_word(word):
-    word = str(word).lstrip("\\").split("\\", 1)[0]
-    return word
 
 
 ######### actions and helper functions

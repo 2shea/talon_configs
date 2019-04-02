@@ -1,9 +1,5 @@
 from talon.voice import Context, Key
-
-
-def text(m):
-    insert(join_words(parse_words(m)).lower())
-
+from .utils import text
 
 ctx = Context("slack", bundle="com.tinyspeck.slackmacgap")
 
