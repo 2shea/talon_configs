@@ -25,9 +25,6 @@ mapping = {
     "bcl": "vcl",
     "tubal": "tuple",
     "vastly": "fastly",
-    "them": "vim",
-    "vin": "vim",
-    "hi": "high",
 }
 
 # used for auto-spacing
