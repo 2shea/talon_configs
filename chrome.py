@@ -1,4 +1,4 @@
-from talon.voice import Context, Key, Str, press
+from talon.voice import Context, Key
 
 context = Context("GoogleChrome", bundle="com.google.Chrome")
 
@@ -19,7 +19,7 @@ keymap = {
     "scroll push": Key("z L"),
     "scroll top": Key("gg"),
     "scroll (bottom | end)": Key("G"),
-    "scroll half down": Key("d"),
+    "(scroll half down | mini page)": Key("d"),
     "scroll half up": Key("u"),
     "[open] link": Key("f"),
     "[open] link new": Key("F"),
