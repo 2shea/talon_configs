@@ -2,7 +2,7 @@ from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
 from talon import app, ctrl, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
-from .utils import parse_words, join_words
+from .utils import *
 
 from talon.engine import engine
 

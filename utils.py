@@ -1,3 +1,5 @@
+from talon.voice import Str
+
 # cleans up some Dragon output from <dgndictation>
 mapping = {
     "semicolon": ";",
