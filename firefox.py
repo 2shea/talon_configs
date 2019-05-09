@@ -1,11 +1,11 @@
-from talon.voice import Context, Key, Str, press
+from talon.voice import Context, Key
 
 context = Context("Firefox", bundle="org.mozilla.firefox")
 
 keymap = {
     "(address bar | go address | go url)": Key("cmd-l"),
-    "back[ward]": Key("cmd-["),
-    "forward": Key("cmd-]"),
+    "go back[ward]": Key("cmd-["),
+    "go forward": Key("cmd-]"),
     "close [tab]": Key("cmd-w"),
     "(find | marco)": Key("cmd-f"),
     "dev tools": Key("cmd-alt-i"),
