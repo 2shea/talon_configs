@@ -1,4 +1,4 @@
-from talon.voice import Key, press, Str, Context
+from talon.voice import Key, Context
 
 ctx = Context("sublime", bundle="com.sublimetext.3")
 
@@ -6,6 +6,7 @@ keymap = {
     "(trundle | comment) super": Key("cmd-alt-/"),
     # general
     "sidebar": [Key("cmd-k"), Key("cmd-b")],
+    "(subl | sublime) (focus | folk) sidebar": Key("ctrl-0"),
     "console": Key("ctrl-`"),
     "[command] pallet": Key("cmd-shift-p"),
     "column one": Key("alt-cmd-1"),
@@ -21,8 +22,10 @@ keymap = {
     # selection
     "(select line | shackle)": Key("cmd-l"),
     "(select | cell) word": Key("cmd-d"),
-    "all word": Key("cmd-ctrl-g"),  # expand currently selected word to all occurances
-    "(select | cell) current": Key("ctrl-cmd-g"),  # select all occurrences of current selection
+    "all word": Key("cmd-ctrl-g"),  # expand currently selected word to all
+    "(select | cell) current": Key(
+        "ctrl-cmd-g"
+    ),  # select all occurrences of current selection
     "(select | cell) scope": Key("shift-cmd-space"),
     "(select | cell) (bracket | paren)": Key("ctrl-shift-m"),
     "bracken": [Key("ctrl-shift-m")],
