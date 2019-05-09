@@ -24,6 +24,7 @@ keymap = {
     "rerun": [Key("up"), Key("enter")],
     "sky": Key("cmd-ctrl-pageup"),
     "floor": Key("cmd-ctrl-pagedown"),
+    "paste history": Key("shift-cmd-h"),
 }
 
 ctx.keymap(keymap)
