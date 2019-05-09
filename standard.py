@@ -1,12 +1,17 @@
-from talon.voice import Word, Context, Key, Rep, RepPhrase, Str, press
-from talon import app, ctrl, clip, ui
+from talon.voice import Word, Context, Key, Str, press
+from talon import app, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
-from .utils import *
-
+from .utils import surround, parse_words, parse_word, sentence_text, text, word
 from talon.engine import engine
 
-engine.register("ready", lambda j: engine.cmd("g.update", name="dragon", enabled=False))
+
+def engine_update(j):
+    engine.cmd("g.update", name="dragon", enabled=False)
+
+
+engine.register("ready", engine_update)
+
 
 def rot13(i, word, _):
     out = ""
@@ -22,10 +27,8 @@ formatters = {
     "camel": (True, lambda i, word, _: word if i == 0 else word.capitalize()),
     "snake": (True, lambda i, word, _: word if i == 0 else "_" + word),
     "smash": (True, lambda i, word, _: word),
-    # spinal or kebab?
     "kebab": (True, lambda i, word, _: word if i == 0 else "-" + word),
     "pack": (True, lambda i, word, _: word if i == 0 else "::" + word),
-    # 'sentence':  (False, lambda i, word, _: word.capitalize() if i == 0 else word),
     "title": (False, lambda i, word, _: word.capitalize()),
     "allcaps": (False, lambda i, word, _: word.upper()),
     "dubstring": (False, surround('"')),
@@ -53,13 +56,13 @@ def FormatText(m):
 
     tmp = []
     spaces = True
-    for i, word in enumerate(words):
-        word = parse_word(word)
+    for i, w in enumerate(words):
+        w = parse_word(w)
         for name in reversed(fmt):
             smash, func = formatters[name]
-            word = func(i, word, i == len(words) - 1)
+            w = func(i, w, i == len(words) - 1)
             spaces = spaces and not smash
-        tmp.append(word)
+        tmp.append(w)
     words = tmp
 
     sep = " "
@@ -90,7 +93,8 @@ ctx.vocab = [
 keymap = {}
 keymap.update(
     {
-        "(phrase | say) <dgndictation> [over]": text,
+        "phrase <dgndictation> [over]": text,
+        "(say | speak) <dgndictation>++ [over]": text,
         "sentence <dgndictation> [over]": sentence_text,
         "comma <dgndictation> [over]": [", ", text],
         "period <dgndictation> [over]": [". ", sentence_text],
@@ -144,9 +148,7 @@ keymap.update(
         "state (def | deaf | deft)": "def ",
         "state else if": "elif ",
         "state if": "if ",
-        "state else if": [" else if ()", Key("left")],
         "state while": ["while ()", Key("left")],
-        "state for": ["for ()", Key("left")],
         "state for": "for ",
         "state switch": ["switch ()", Key("left")],
         "state case": ["case \nbreak;", Key("up")],
@@ -216,6 +218,7 @@ keymap.update(
         "copy active bundle": copy_bundle,
         "wipe": Key("backspace"),
         "(pad | padding ) ": ["  ", Key("left")],
+        "funny": "ha ha",
     }
 )
 
