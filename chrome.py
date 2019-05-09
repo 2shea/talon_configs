@@ -4,7 +4,7 @@ context = Context("GoogleChrome", bundle="com.google.Chrome")
 
 keymap = {
     "(address bar | go address | go url)": Key("cmd-l"),
-    "back[ward]": Key("cmd-["),
+    "go back[ward]": Key("cmd-["),
     "forward": Key("cmd-]"),
     "close [tab]": Key("cmd-w"),
     "(find | marco)": Key("cmd-f"),
