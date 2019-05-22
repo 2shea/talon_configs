@@ -17,7 +17,7 @@ keymap = {
     "[next] (section | zone)": Key("f6"),
     "(previous | last) (section | zone)": Key("shift-f6"),
     "direct messages": Key("cmd-shift-k"),
-    "(slack | lack) (unread | new) threads": Key("cmd-shift-t"),
+    "(slack | lack) threads": Key("cmd-shift-t"),
     "(slack | lack) (history [next] | back | backward)": Key("cmd-["),
     "(slack | lack) forward": Key("cmd-]"),
     "[next] (element | bit)": Key("tab"),
