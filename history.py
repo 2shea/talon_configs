@@ -1,5 +1,6 @@
 import os
 from atomicwrites import atomic_write
+from collections import deque
 
 from talon import app, webview
 from talon.engine import engine
@@ -7,12 +8,68 @@ from talon_init import TALON_HOME
 
 path = os.path.join(TALON_HOME, "last_phrase")
 WEBVIEW = True
+FONT_SIZE = 12
+BORDER_SIZE = int(FONT_SIZE / 6)
 NOTIFY = False
+LAST_COUNT = 3
+
+css_template = (
+    """
+<style type="text/css">
+    body {
+        padding: 0;
+        margin: 0;
+        font-size: """
+    + str(FONT_SIZE)
+    + """px;
+        -webkit-border-vertical-spacing: """
+    + str(BORDER_SIZE)
+    + """px;
+        -webkit-border-horizontal-spacing: """
+    + str(BORDER_SIZE)
+    + """px;
+    }
+
+    .contents {
+        width: 100%;
+    }
+
+    td {
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        padding-left: 5px;
+        width: 1px;
+        white-space: nowrap;
+    }
+
+</style>
+"""
+)
+
+last_template = (
+    css_template
+    + """
+    <style type="text/css">
+        tr:first-child { background: black; color: white; }
+    </style>
+    <div class="contents">
+    <table>
+    {% for phrase in last_items %}
+        <tr><td>{{ phrase }}</td></tr>
+    {% endfor %}
+    </table>
+    </div>
+"""
+)
+
 
 if WEBVIEW:
     webview = webview.Webview()
     webview.body = "<i>[waiting&nbsp;for&nbsp;phrase]</i>"
     webview.show()
+    # only use a deque for the webview
+    last_items = deque(maxlen=LAST_COUNT)
 
 
 def parse_phrase(phrase):
@@ -22,19 +79,18 @@ def parse_phrase(phrase):
 def on_phrase(j):
     phrase = parse_phrase(j.get("phrase", []))
     cmd = j["cmd"]
-    if cmd == "p.end" and phrase:
-        with atomic_write(path, overwrite=True) as f:
-            f.write(phrase)
+    if cmd == "p.end":
 
-    if WEBVIEW and cmd in ("p.end", "p.hypothesis") and phrase:
-        body = phrase.replace(" ", "&nbsp;")
-        if cmd == "p.hypothesis":
-            webview.render("<i>{{ phrase }}</i>", phrase=body)
-        else:
-            webview.render("{{ phrase }}", phrase=body)
+        if phrase:
+            with atomic_write(path, overwrite=True) as f:
+                f.write(phrase)
 
-    if NOTIFY and cmd == "p.end" and phrase:
-        app.notify(body=phrase)
+            if WEBVIEW:
+                last_items.appendleft(phrase)
+                webview.render(last_template, last_items=last_items)
+
+            if NOTIFY:
+                app.notify(body=phrase)
 
 
 engine.register("phrase", on_phrase)
