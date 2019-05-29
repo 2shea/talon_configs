@@ -107,7 +107,6 @@ keymap.update(
         "cd talon user": "cd {}".format(TALON_USER),
         "cd talon plugins": "cd {}".format(TALON_PLUGINS),
         "grep": "grep ",
-        "(rm | are em)": "rm",
         "elle less": "ls ",
         "run L S": "ls\n",
         "run (S S H | S H)": "ssh",
