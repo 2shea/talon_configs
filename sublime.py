@@ -9,9 +9,12 @@ keymap = {
     "(subl | sublime) (focus | folk) sidebar": Key("ctrl-0"),
     "console": Key("ctrl-`"),
     "[command] pallet": Key("cmd-shift-p"),
-    "column one": Key("alt-cmd-1"),
+    "(column | row) one": Key("alt-cmd-1"),
     "column two": Key("alt-cmd-2"),
     "column three": Key("alt-cmd-3"),
+    "row two": Key("shift-alt-cmd-2"),
+    "row three": Key("shift-alt-cmd-3"),
+    "grid": Key("alt-cmd-5"),
     # window
     "(subl | sublime) new window": Key("shift-cmd-n"),
     # close window
