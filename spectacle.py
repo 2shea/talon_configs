@@ -23,6 +23,10 @@ keymap = {
     "spec shrink": Key("ctrl-alt-shift-left"),
     "spec undo": Key("alt-cmd-z"),
     "spec redo": Key("alt-shift-cmd-z"),
+    "diffie up": Key("alt-cmd-ctrl-up"),
+    "diffie down": Key("alt-cmd-ctrl-down"),
+    "diffie left": Key("alt-cmd-ctrl-shift-left"),
+    "diffie right": Key("alt-cmd-ctrl-shift-right"),
 }
 
 context.keymap(keymap)
