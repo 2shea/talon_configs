@@ -1,6 +1,5 @@
 from talon import app, clip, cron
-from talon.engine import engine
-from talon.voice import Word, Key, Context, Str, press
+from talon.voice import Context, Str, press
 from talon.webview import Webview
 
 from .utils import parse_word
@@ -156,6 +155,9 @@ def raise_homophones(m, force_raise=False, is_selection=False):
         word = str(m._words[len(m._words) - 1])
         word = parse_word(word)
 
+    is_capitalized = word == word.capitalize()
+    is_upper = word.isupper()
+
     word = word.lower()
 
     if word not in all_homophones:
@@ -173,6 +175,12 @@ def raise_homophones(m, force_raise=False, is_selection=False):
             new = active_word_list[1]
         else:
             new = active_word_list[0]
+
+        if is_capitalized:
+            new = new.capitalize()
+        elif is_upper:
+            new = new.upper()
+
         clip.set(new)
         press("cmd-v", wait=0)
         return
@@ -230,13 +238,33 @@ help_template = (
 <div class="contents">
 <h3>homophones help</h3>
 <table>
-<tr><td class="pick">🔊 phones</td><td>look up homophones for selected text</td></tr>
-<tr><td class="pick">🔊 phones [word]</td><td>look up homophones for a given word</td></tr>
-<tr><td class="pick">🔊 pick [number]</td><td>make a selection from the homophone list</td></tr>
-<tr><td class="pick">🔊 ship [number]</td><td>make a selection and capitalize it</td></tr>
-<tr><td class="pick">🔊 yeller [number]</td><td>make a selection and uppercase it</td></tr>
-<tr><td class="pick">🔊 lower [number]</td><td>make a selection and lowercase it</td></tr>
-<tr><td colspan="2" class="pick cancel">🔊 cancel</td></tr>
+<tr>
+    <td class="pick">🔊 phones</td>
+    <td>look up homophones for selected text</td>
+</tr>
+<tr>
+    <td class="pick">🔊 phones [word]</td>
+    <td>look up homophones for a given word</td>
+</tr>
+<tr>
+    <td class="pick">🔊 pick [number]</td>
+    <td>make a selection from the homophone list</td>
+</tr>
+<tr>
+    <td class="pick">🔊 ship [number]</td>
+    <td>make a selection and capitalize it</td>
+</tr>
+<tr>
+    <td class="pick">🔊 yeller [number]</td>
+    <td>make a selection and uppercase it</td>
+</tr>
+<tr>
+    <td class="pick">🔊 lower [number]</td>
+    <td>make a selection and lowercase it</td>
+</tr>
+<tr>
+    <td colspan="2" class="pick cancel">🔊 cancel</td>
+</tr>
 </table>
 </div>
 """
