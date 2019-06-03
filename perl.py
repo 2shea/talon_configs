@@ -1,19 +1,23 @@
 from talon.voice import Context, Key
 
-
-def perl(app, win):
-    return (
-        any(win.doc.endswith(x) for x in (".pm", ".pl", ".PM", ".t", ".tt", ".py"))
-        or win.app.name == "iTerm2"
-    )
-
-# ctx = Context("perl", func=perl)
 ctx = Context("perl")
 
-ctx.vocab = ["params", "perltidy", "githook", "undef", "perl", "diag", "plack", "rehash"]
+ctx.vocab = [
+    "params",
+    "perltidy",
+    "githook",
+    "undef",
+    "perl",
+    "diag",
+    "plack",
+    "rehash",
+    "mojolicious",
+]
+
 
 ctx.keymap(
     {
+        "perl hash bang": "#!/usr/bin/env perl\n",
         "log for pearl": "Log4perl",
         "perl env": "plenv ",
         "see pan (m | em | minus)": "cpanm ",
@@ -47,5 +51,6 @@ ctx.keymap(
         "perl (exclusive | ex) or": " xor ",
         "op [perl] (diamond | input)": ["<>", Key("left")],
         "perl times": " x ",
+        "perl (embedded | embed)": ["<%=  %>", Key("left left left")],
     }
 )
