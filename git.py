@@ -49,5 +49,6 @@ context.keymap(
         "run get tag": "git tag ",
         "run get rev parse (had | head)": "git rev-parse HEAD",
         "run get last commit": "git rev-parse HEAD\n",
+        "get [remote] add origin": "git remote add origin ",
     }
 )
