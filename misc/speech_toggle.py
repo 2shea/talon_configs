@@ -1,4 +1,4 @@
-from talon.voice import Context, ContextGroup
+from talon.voice import Context, ContextGroup, Key
 from talon.engine import engine
 from talon_plugins import speech
 
@@ -17,6 +17,13 @@ sleepy.keymap(
             lambda m: speech.set_enabled(True),
             lambda m: engine.mimic("go to sleep".split()),
         ],
+        "next slide": [Key("pgdown")],
+        "last slide": [Key("pgup")],
+        "home slide": [Key("home")],
+        "present": [Key("f16")],
+        "present fullscreen": [Key("f17")],
+        "restart timer": [Key("f18")],
+        "present help": [Key("f13")],
     }
 )
 sleep_group.load()
