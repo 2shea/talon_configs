@@ -22,7 +22,7 @@ context.keymap(
         "caret": "^",
         "at sign": "@",
         "(and sign | ampersand )": "&",
-        # "pipe": "|",
+        "pipe": "|",
         "(dubquote | double quote)": '"',
         "triple quote": "'''",
         "(dot dot | dotdot)": "..",
@@ -65,6 +65,6 @@ context.keymap(
         "(op | logical | bitwise) or equals": " |= ",
         "(op | logical | bitwise) (ex | exclusive) or equals": " ^= ",
         "[(op | logical | bitwise)] (left shift | shift left) equals": " <<= ",
-        "[(op | logical | bitwise)] (right shift | shift right) equals": " >>= ",
+        "[(op | logical | bitwise)] right shift assign": " >>= ",
     }
 )

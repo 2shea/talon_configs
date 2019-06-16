@@ -74,7 +74,7 @@ keymap = {
     # general
     "fullscreen": Key("ctrl-cmd-f"),
     # file
-    "new": Key("cmd-n"),
+    # "new": Key("cmd-n"),
     "(save | safe)": Key("cmd-s"),
     "close (file | tab)": Key("cmd-w"),
     # selection
