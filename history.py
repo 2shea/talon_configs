@@ -3,8 +3,12 @@ from atomicwrites import atomic_write
 from collections import deque
 
 from talon import app, webview
+
 from talon.engine import engine
 from talon_init import TALON_HOME
+from talon.voice import Context
+
+context = Context("history")
 
 path = os.path.join(TALON_HOME, "last_phrase")
 WEBVIEW = True
@@ -94,3 +98,19 @@ def on_phrase(j):
 
 
 engine.register("phrase", on_phrase)
+
+
+def close_history():
+    webview.hide()
+
+
+def open_history():
+    webview.show()
+
+
+context.keymap(
+    {
+        "(close | hide) history": lambda x: close_history(),
+        "(open | show) history": lambda x: open_history(),
+    }
+)
