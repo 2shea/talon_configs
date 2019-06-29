@@ -7,7 +7,7 @@ keymap = {
     "go back[ward]": Key("cmd-["),
     "forward": Key("cmd-]"),
     "close [tab]": Key("cmd-w"),
-    "(find | marco)": Key("cmd-f"),
+    "chrome (find | marco)": Key("cmd-f"),
     "dev tools": Key("cmd-alt-i"),
     # navigating current page
     "help": Key("?"),
