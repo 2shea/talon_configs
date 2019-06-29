@@ -24,9 +24,9 @@ sleepy.keymap(
         ],
         "next slide": [Key("pgdown")],
         "last slide": [Key("pgup")],
-        "home slide": [Key("home")],
-        "present": [Key("f10")],
-        "present fullscreen": [Key("f9")],
+        "beginning slide": [Key("home")],
+        "present notes": [Key("f10")],
+        "present (fullscreen | full)": [Key("f9")],
         "present clone": [Key("f7")],
         "restart timer": [Key("f8")],
         "video play": [
