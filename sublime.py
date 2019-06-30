@@ -60,7 +60,7 @@ keymap = {
     "jump (up | start)": Key("cmd-up"),
     "jump (down | end)": Key("cmd-down"),
     # find & replace
-    "find": Key("cmd-f"),
+    "(subl | sublime) find": Key("cmd-f"),
     "expression": Key("alt-cmd-r"),
     "case insensitive": Key("alt-cmd-c"),
     "whole word": Key("alt-cmd-w"),
