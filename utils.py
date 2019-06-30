@@ -66,8 +66,12 @@ def sentence_text(m):
 
 
 def word(m):
-    text = join_words(list(map(parse_word, m.dgnwords[0]._words)))
+    text = get_word(m)
     insert(text.lower())
+
+
+def get_word(m):
+    return join_words(list(map(parse_word, m.dgnwords[0]._words)))
 
 
 def surround(by):
