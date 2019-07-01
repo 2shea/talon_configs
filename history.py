@@ -110,7 +110,7 @@ def open_history():
 
 context.keymap(
     {
-        "(close | hide) history": lambda x: close_history(),
-        "(open | show) history": lambda x: open_history(),
+        "history (close | hide)": lambda x: close_history(),
+        "history (open | show)": lambda x: open_history(),
     }
 )
