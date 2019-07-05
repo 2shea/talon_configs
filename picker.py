@@ -16,7 +16,7 @@ with open(os.path.join(MODULE_DIRECTORY, "picker.css")) as f:
 with io.open(os.path.join(MODULE_DIRECTORY, "picker.html"), "r", encoding="utf8") as f:
     html_template = f.read()
 
-template = css_template + html_template
+template = '<style type="text/css">' + css_template + "</style>" + html_template
 
 
 def selection_picker(title, data, keymap={}):
