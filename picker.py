@@ -1,3 +1,5 @@
+import os
+import io
 from talon import clip
 from talon.voice import Context, press
 from talon.webview import Webview
@@ -6,65 +8,15 @@ from .utils import parse_word
 context = Context("picker")
 webview = Webview()
 
-css_template = """
-<style type="text/css">
-body {
-    padding: 0;
-    margin: 0;
-    font-size: 150%;
-    min-width: 600px;
-}
+MODULE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
-td {
-    text-align: left;
-    margin: 0;
-    padding: 5px 10px;
-}
+with open(os.path.join(MODULE_DIRECTORY, "picker.css")) as f:
+    css_template = f.read()
 
-h3 {
-    padding: 5px 0px;
-}
+with io.open(os.path.join(MODULE_DIRECTORY, "picker.html"), "r", encoding="utf8") as f:
+    html_template = f.read()
 
-table {
-    counter-reset: rowNumber;
-}
-
-table .count {
-    counter-increment: rowNumber;
-}
-
-.count td:first-child::after {
-    content: counter(rowNumber);
-    min-with: 1em;
-    margin-right: 0.5em;
-}
-
-.pick {
-    font-weight: normal;
-    font-style: italic;
-}
-
-.cancel {
-    text-align: center;
-}
-
-</style>
-"""
-
-template = (
-    css_template
-    + """
-<div class="contents">
-<h3>{{ title }}</h3>
-<table>
-{% for line in data %}
-<tr class="count"><td class="pick">🔊 pick </td><td>{{ line }}</td></tr>
-{% endfor %}
-<tr><td colspan="2" class="pick cancel">🔊 cancel</td></tr>
-</table>
-</div>
-"""
-)
+template = css_template + html_template
 
 
 def selection_picker(title, data, keymap={}):

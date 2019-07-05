@@ -1,0 +1,9 @@
+<div class="contents">
+<h3>{{ title }}</h3>
+<table>
+{% for line in data %}
+<tr class="count"><td class="pick">🔊 pick </td><td>{{ line }}</td></tr>
+{% endfor %}
+<tr><td colspan="2" class="pick cancel">🔊 cancel</td></tr>
+</table>
+</div>
