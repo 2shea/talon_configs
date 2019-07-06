@@ -18,7 +18,7 @@ keymap = {
     "move tab right": Key("shift-cmd-right"),
     "(subble | subtle)": "subl ",
     "(scratch | scrap)": Key("ctrl-u"),
-    "search": Key("cmd-f"),
+    "(shell | i term )search": Key("cmd-f"),
     "jump back": Key("ctrl-[ b"),
     "jump [forward]": Key("ctrl-] f"),
     "rerun": [Key("up"), Key("enter")],
