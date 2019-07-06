@@ -28,6 +28,7 @@ mapping = {
     "bcl": "vcl",
     "tubal": "tuple",
     "vastly": "fastly",
+    "talent": "talon",
 }
 
 # used for auto-spacing
