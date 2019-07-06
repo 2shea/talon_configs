@@ -13,4 +13,6 @@ def random_emoji():
     press("cmd-v", wait=2000)
 
 
-context.keymap({"emoji random": lambda _: random_emoji()})
+context.keymap({
+    "emoji random": lambda _: random_emoji()
+})
