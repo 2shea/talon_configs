@@ -1,9 +1,7 @@
 import os
 from atomicwrites import atomic_write
 from collections import deque
-
-from talon import app, webview
-
+from talon import app, webview, ui
 from talon.engine import engine
 from talon_init import TALON_HOME
 from talon.voice import Context
@@ -12,10 +10,14 @@ context = Context("history")
 
 path = os.path.join(TALON_HOME, "last_phrase")
 WEBVIEW = True
-FONT_SIZE = 12
+FONT_SIZE = 50
 BORDER_SIZE = int(FONT_SIZE / 6)
 NOTIFY = False
 LAST_COUNT = 3
+
+
+main = ui.main_screen().visible_rect
+main.width
 
 css_template = (
     """
@@ -35,14 +37,16 @@ css_template = (
     }
 
     .contents {
-        width: 100%;
+        width: """
+    + str(main.width)
+    + """px;
     }
 
     td {
         text-align: left;
         margin: 0;
         padding: 0;
-        padding-left: 5px;
+        padding-left: 15px;
         width: 1px;
         white-space: nowrap;
     }
@@ -71,7 +75,8 @@ last_template = (
 if WEBVIEW:
     webview = webview.Webview()
     webview.body = "<i>[waiting&nbsp;for&nbsp;phrase]</i>"
-    webview.show()
+    # webview.resize(x=main.x, y=main.y, w=main.width, h=main.height)
+    # webview.show()
     # only use a deque for the webview
     last_items = deque(maxlen=LAST_COUNT)
 

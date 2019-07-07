@@ -102,6 +102,7 @@ keymap.update(
         "more <dgndictation> [over]": [" ", text],
         "word <dgnwords>": word,
         "(%s)+ <dgndictation> [over]" % (" | ".join(formatters)): FormatText,
+        "dragon words": "<dgnwords>",
         "slap": [Key("cmd-right enter")],
         "cd": "cd ",
         "cd talon home": "cd {}\n".format(TALON_HOME),
