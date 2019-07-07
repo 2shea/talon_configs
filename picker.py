@@ -13,21 +13,17 @@ MODULE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(MODULE_DIRECTORY, "picker.css")) as f:
     css_template = f.read()
 
-with io.open(os.path.join(MODULE_DIRECTORY, "picker.html"), "r", encoding="utf8") as f:
-    html_template = f.read()
 
-template = '<style type="text/css">' + css_template + "</style>" + html_template
-
-
-def selection_picker(title, data, keymap={}):
-    picker = Picker(title=title, data=data, keymap=keymap)
+def selection_picker(title, template, data, keymap={}):
+    picker = Picker(title=title, template=template, data=data, keymap=keymap)
     picker.render()
 
 
 class Picker:
-    def __init__(self, title, data, keymap):
+    def __init__(self, title, template, data, keymap):
         self.title = title
-        self.data = data
+        self.template = self.make_template(template)
+        self.data = list(data)
         self.keymap = keymap
 
         self.keymap.update(
@@ -45,10 +41,15 @@ class Picker:
         press("cmd-v", wait=2000)
         self.close()
 
+    def make_template(self, template):
+        with io.open(os.path.join(MODULE_DIRECTORY, template), "r", encoding="utf8") as f:
+            html_template = f.read()
+        return '<style type="text/css">' + css_template + "</style>" + html_template
+
     def render(self):
         if len(self.data) == 0:
             return
-        webview.render(template, title=self.title, data=self.data)
+        webview.render(self.template, title=self.title, data=self.data)
         webview.show()
         context.keymap(self.keymap)
         context.load()

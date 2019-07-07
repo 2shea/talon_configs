@@ -101,7 +101,7 @@ context.keymap(
         "(tag | ellie) table head": CursorText("<thead>{.}</thead>"),
         "(tag | ellie) table body": CursorText("<tbody>{.}</tbody>"),
         "(tag | ellie) table row": CursorText("<tr>{.}</tr>"),
-        "(tag | ellie) table cell": CursorText("<td>{.}</td>"),
+        "(tag | ellie) table (cell | data)": CursorText("<td>{.}</td>"),
         #  parse_words_as_integer doesn't seem to work so we'll do it the bad way for now
         # '(tag | ellie) heading <dgndictation>': ['<h', parse_words_as_integer, '></h', parse_words_as_integer, '>'],
         "(tag | ellie) heading one": CursorText("<h1>{.}</h1>"),
@@ -125,15 +125,16 @@ context.keymap(
         "(tag | ellie) image": CursorText('<img src="{.}" alt="" title="" />'),
         "(tag | ellie) her": "<hr>",
         "(tag | ellie) burr": "<br>",
+        "(tag | ellie) class": ["class=\"\"", Key("left")],
         # Attributes - example: "tag div addy class box" will output "<div class="box"></div>
-        "addy class <dgndictation>": [
+        "(addy | tag) class <dgndictation>": [
             Key("left"),
             ' class=""',
             Key("left"),
             remove_spaces_around_dashes,
             Key("right right"),
         ],
-        "addy ID <dgndictation>": [
+        "(addy | tag) ID <dgndictation>": [
             Key("left"),
             ' id=""',
             Key("left"),
@@ -141,7 +142,9 @@ context.keymap(
             Key("right right"),
         ],
         # Moving Around between tags
-        "skip (tag | ellie) right": skip_tag_right,
-        "skip (tag | ellie) left": skip_tag_left,
+        "(tag | ellie) (skip | jump) [right]": skip_tag_right,
+        "(tag | ellie) (skip | jump) left": skip_tag_left,
+        "lint": Key("ctrl-cmd-l"),
+        "show errors": Key("ctrl-cmd-a"),
     }
 )
