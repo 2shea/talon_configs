@@ -27,7 +27,7 @@ ctx.keymap(
         "find (previous | prev)": Key("cmd+shift+g"),
         "hide [the] menus ": Key("ctrl+shift+f"),
         "[insert] page break": Key("cmd+enter"),
-        "(search [the] menus | command pallet)": Key("cmd+/"),
+        # "(search [the] menus | command pallet)": Key("cmd+/"),
         "bold": Key("cmd+b"),
         "italicize": Key("cmd+i"),
         "underline": Key("cmd+u"),

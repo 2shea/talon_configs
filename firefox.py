@@ -46,7 +46,7 @@ keymap = {
     "last visited": Key("^"),
     "dupe tab": Key("y t"),
     "restore": Key("X"),
-    "search tabs": Key("T"),
+    # "search tabs": Key("T"),
     "move to window": Key("W"),
 }
 
