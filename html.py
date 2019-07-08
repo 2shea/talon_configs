@@ -125,15 +125,16 @@ context.keymap(
         "(tag | ellie) image": CursorText('<img src="{.}" alt="" title="" />'),
         "(tag | ellie) her": "<hr>",
         "(tag | ellie) burr": "<br>",
+        "(tag | ellie) class": ["class=\"\"", Key("left")],
         # Attributes - example: "tag div addy class box" will output "<div class="box"></div>
-        "addy class <dgndictation>": [
+        "(addy | tag) class <dgndictation>": [
             Key("left"),
             ' class=""',
             Key("left"),
             remove_spaces_around_dashes,
             Key("right right"),
         ],
-        "addy ID <dgndictation>": [
+        "(addy | tag) ID <dgndictation>": [
             Key("left"),
             ' id=""',
             Key("left"),
