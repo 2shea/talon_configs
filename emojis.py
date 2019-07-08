@@ -15,4 +15,5 @@ def random_emoji():
 
 context.keymap({
     "emoji random": lambda _: random_emoji(),
+    # TODO: add emoji search
 })
