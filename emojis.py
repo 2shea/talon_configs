@@ -7,13 +7,14 @@ from ..emoji_data_python import emoji_data as emojis, emoji_short_names as emoji
 
 context = Context("emojis")
 
+def emoji_helper(emoji):
+	# TODO: preserve clipboard
+	clip.set(emoji)
+	press("cmd-v", wait=2000)
 
 def random_emoji():
     emoji = random.choice(emojis)
-    # TODO: preserve clipboard
-    clip.set(emoji.char)
-    press("cmd-v", wait=2000)
-
+    emoji_helper(emoji.char)
 
 def search(m):
 	name = extract_word(m)
@@ -23,4 +24,9 @@ def search(m):
 context.keymap({
     "emoji random": lambda _: random_emoji(),
 	"emoji search <dgnwords>": search,
+	"emoji raised [eyebrow]": lambda _: emoji_helper("🤨"),
+	"emoji monocle": lambda _: emoji_helper("🧐"),
+	"emoji whale": lambda _: emoji_helper("🐋"),
+	"emoji snail": lambda _: emoji_helper("🐌"),
+	"emoji thumbs [up]": lambda _: emoji_helper("👍"),
 })
