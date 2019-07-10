@@ -22,7 +22,7 @@ sleepy.keymap(
             lambda m: engine.mimic("go to sleep".split()),
             Key("tab"),
         ],
-        "[next] slide": [Key("pgdown")],
+        "(next slide | go next)": [Key("pgdown")],
         "last slide": [Key("pgup")],
         "beginning slide": [Key("home")],
         "present notes": [Key("f10")],

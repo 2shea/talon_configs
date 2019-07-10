@@ -84,6 +84,7 @@ keymap = {
     "(select | cell) bottom ": Key("cmd-shift-down"),
     "(select | cell) right": Key("shift-right"),
     "(select | cell) left": Key("shift-left"),
+    "(select | cell) word": Key("shift-alt-left"),
     "(select | cell) (end | push)": Key("cmd-shift-right"),
     "(select | cell) (start | begin | pop)": Key("cmd-shift-left"),
     # edit

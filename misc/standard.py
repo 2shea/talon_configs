@@ -142,7 +142,8 @@ keymap.update(
         "menubar": Key("ctrl-f2"),
         "status menu": Key("ctrl-f8"),
         "my doc": Key("ctrl-f3"),
-       }
+        "open presentation": "http://localhost:8000/presentation.html#1\n",
+    }
 )
 
 ctx.keymap(keymap)
