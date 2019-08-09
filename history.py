@@ -71,7 +71,7 @@ last_template = (
 if WEBVIEW:
     webview = webview.Webview()
     webview.body = "<i>[waiting&nbsp;for&nbsp;phrase]</i>"
-    webview.show()
+    # webview.show()
     # only use a deque for the webview
     last_items = deque(maxlen=LAST_COUNT)
 
