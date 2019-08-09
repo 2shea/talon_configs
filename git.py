@@ -26,7 +26,7 @@ context.keymap(
         "run get in it": "git init ",
         "get log": "git log ",
         "run get log": "git log\n",
-        "get next release": "git log --merges --oneline ",
+        "get next release": "git log --oneline --no-decorate --grep 'Merge pull' ",
         "run get merge": "git merge ",
         "run get move": "git mv ",
         "get pull": "git pull ",
