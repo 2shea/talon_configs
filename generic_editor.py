@@ -1,36 +1,7 @@
 from talon.voice import Key, press, Str, Context
-from .utils import parse_word
+from .utils import parse_word, numerals, optional_numerals, text_to_number
 
 ctx = Context("generic_editor")
-
-# support for parsing numbers as command postfix
-
-numeral_map = dict((str(n), n) for n in range(0, 20))
-for n in [20, 30, 40, 50, 60, 70, 80, 90]:
-    numeral_map[str(n)] = n
-numeral_map["oh"] = 0  # synonym for zero
-
-numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
-optional_numerals = " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
-
-
-def text_to_number(m):
-
-    tmp = [str(s).lower() for s in m._words]
-    words = [parse_word(word) for word in tmp]
-
-    result = 0
-    factor = 1
-    for word in reversed(words):
-        if word not in numerals:
-            # we consumed all the numbers and only the command name is left.
-            break
-
-        result = result + factor * int(numeral_map[word])
-        factor = 10 * factor
-
-    return result
-
 
 # actions and helper functions
 def jump_to_bol(m):
@@ -89,13 +60,13 @@ def get_first_word(m):
 keymap = {
     "(trundle | comment)": toggle_comments,
     "(trundle | comment)"
-    + numerals: jump_to_bol_and(toggle_comments),  # noop for plain/text
-    "snipline" + optional_numerals: jump_to_bol_and(snipline),
-    "sprinkle" + optional_numerals: jump_to_bol,
-    "spring" + optional_numerals: jump_to_eol_and(jump_to_beginning_of_text),
-    "sprinkoon" + numerals: jump_to_eol_and(lambda: press("enter")),
-    "dear" + optional_numerals: jump_to_eol_and(lambda: None),
-    "smear" + optional_numerals: jump_to_eol_and(jump_to_nearly_end_of_line),
+    + numerals(): jump_to_bol_and(toggle_comments),  # noop for plain/text
+    "snipline" + optional_numerals(): jump_to_bol_and(snipline),
+    "sprinkle" + optional_numerals(): jump_to_bol,
+    "spring" + optional_numerals(): jump_to_eol_and(jump_to_beginning_of_text),
+    "sprinkoon" + numerals(): jump_to_eol_and(lambda: press("enter")),
+    "dear" + optional_numerals(): jump_to_eol_and(lambda: None),
+    "smear" + optional_numerals(): jump_to_eol_and(jump_to_nearly_end_of_line),
     # general
     "fullscreen": Key("ctrl-cmd-f"),
     # file

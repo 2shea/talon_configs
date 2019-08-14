@@ -1,4 +1,5 @@
 import os
+import itertools
 from atomicwrites import atomic_write
 from collections import deque
 
@@ -7,6 +8,7 @@ from talon import app, webview
 from talon.engine import engine
 from talon_init import TALON_HOME
 from talon.voice import Context
+from .utils import optional_numerals, text_to_number
 
 context = Context("history")
 
@@ -15,7 +17,8 @@ WEBVIEW = True
 FONT_SIZE = 12
 BORDER_SIZE = int(FONT_SIZE / 6)
 NOTIFY = False
-LAST_COUNT = 3
+LAST_COUNT = 5
+LAST_MAX = 30
 
 css_template = (
     """
@@ -73,7 +76,7 @@ if WEBVIEW:
     webview.body = "<i>[waiting&nbsp;for&nbsp;phrase]</i>"
     # webview.show()
     # only use a deque for the webview
-    last_items = deque(maxlen=LAST_COUNT)
+    last_items = deque(maxlen=LAST_MAX)
 
 
 def parse_phrase(phrase):
@@ -81,6 +84,7 @@ def parse_phrase(phrase):
 
 
 def on_phrase(j):
+    global LAST_COUNT
     phrase = parse_phrase(j.get("phrase", []))
     cmd = j["cmd"]
     if cmd == "p.end":
@@ -91,7 +95,12 @@ def on_phrase(j):
 
             if WEBVIEW:
                 last_items.appendleft(phrase)
-                webview.render(last_template, last_items=last_items)
+                phrase_words = phrase.split()
+
+                if "history show" in phrase and phrase_words[-1].isdigit():
+                    LAST_COUNT = int(phrase_words[-1])
+
+                webview.render(last_template, last_items=list(itertools.islice(last_items, 0, LAST_COUNT)))
 
             if NOTIFY:
                 app.notify(body=phrase)
@@ -110,7 +119,7 @@ def open_history():
 
 context.keymap(
     {
-        "history (close | hide)": lambda x: close_history(),
-        "history (open | show)": lambda x: open_history(),
+        "history (close | hide)": lambda _: close_history(),
+        "history (open | show)" + optional_numerals(): lambda _: open_history(),
     }
 )

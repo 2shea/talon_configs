@@ -86,6 +86,36 @@ def surround(by):
 
     return func
 
+# support for parsing numbers as command postfix
+def numeral map():
+    numeral_map = dict((str(n), n) for n in range(0, 20))
+    for n in [20, 30, 40, 50, 60, 70, 80, 90]:
+        numeral_map[str(n)] = n
+    numeral_map["oh"] = 0  # synonym for zero
+    return numeral_map
+
+def numerals():
+    return " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
+
+def optional_numerals():
+    return " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
+
+def text_to_number(m):
+    tmp = [str(s).lower() for s in m._words]
+    words = [parse_word(word) for word in tmp]
+
+    result = 0
+    factor = 1
+    for word in reversed(words):
+        if word not in optional_numerals():
+            # we consumed all the numbers and only the command name is left.
+            break
+
+        result = result + factor * int(numeral_map[word])
+        factor = 10 * factor
+
+    return result
+
 
 number_conversions = {"oh": "0"}  # 'oh' => zero
 for i, w in enumerate(
