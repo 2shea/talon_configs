@@ -87,7 +87,7 @@ def surround(by):
     return func
 
 # support for parsing numbers as command postfix
-def numeral map():
+def numeral_map():
     numeral_map = dict((str(n), n) for n in range(0, 20))
     for n in [20, 30, 40, 50, 60, 70, 80, 90]:
         numeral_map[str(n)] = n
@@ -95,10 +95,10 @@ def numeral map():
     return numeral_map
 
 def numerals():
-    return " (" + " | ".join(sorted(numeral_map.keys())) + ")+"
+    return " (" + " | ".join(sorted(numeral_map().keys())) + ")+"
 
 def optional_numerals():
-    return " (" + " | ".join(sorted(numeral_map.keys())) + ")*"
+    return " (" + " | ".join(sorted(numeral_map().keys())) + ")*"
 
 def text_to_number(m):
     tmp = [str(s).lower() for s in m._words]
@@ -111,7 +111,7 @@ def text_to_number(m):
             # we consumed all the numbers and only the command name is left.
             break
 
-        result = result + factor * int(numeral_map[word])
+        result = result + factor * int(numeral_map()[word])
         factor = 10 * factor
 
     return result
