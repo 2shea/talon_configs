@@ -25,6 +25,11 @@ keymap = {
     "sky": Key("cmd-ctrl-pageup"),
     "floor": Key("cmd-ctrl-pagedown"),
     "paste history": Key("shift-cmd-h"),
+
+    # these require some changes to preferences:
+    # https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x
+    "(shall | shell) (stone | jack)": Key("alt-b"),
+    "(shall | shell) (step | jump)": Key("alt-f"),
 }
 
 ctx.keymap(keymap)
