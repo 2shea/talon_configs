@@ -1,5 +1,5 @@
 from talon.voice import Key, press, Str, Context
-from .utils import parse_word, numerals, optional_numerals, text_to_number
+from .utils import parse_word, numerals, optional_numerals, text_to_number, jump_to_target
 
 ctx = Context("generic_editor")
 
@@ -56,6 +56,10 @@ def snipline():
 def get_first_word(m):
     return str(m.dgndictation[0]._words[0])
 
+def jump_to(m):
+    target = get_first_word(m)
+    jump_to_target(target)
+
 
 keymap = {
     "(trundle | comment)": toggle_comments,
@@ -93,6 +97,7 @@ keymap = {
     "pop": Key("cmd-left"),
     "step": Key("alt-right"),
     "stone": Key("alt-left"),
+    "jump to <dgndictation>": jump_to,
 }
 
 ctx.keymap(keymap)

@@ -1,4 +1,5 @@
-from talon.voice import Str
+from talon.voice import Str, press
+import talon.clip as clip
 from .bundle_groups import FILETYPE_SENSITIVE_BUNDLES
 
 # cleans up some Dragon output from <dgndictation>
@@ -76,6 +77,7 @@ def extract_word(m):
     return join_words(list(map(parse_word, m.dgnwords[0]._words)))
 
 
+# FIX ME
 def surround(by):
     def func(i, word, last):
         if i == 0:
@@ -171,3 +173,22 @@ def is_filetype(extensions=()):
         return True
 
     return matcher
+
+def jump_to_target(target):
+    old = clip.get()
+    press("cmd-left", wait=2000)
+    press("cmd-shift-right", wait=2000)
+    press("cmd-c", wait=2000)
+    press("left", wait=2000)
+    line = clip.get()
+    print("LINE")
+    print(line)
+    clip.set(old)
+    result = line.find(target)
+    if result == -1:
+        return
+    for i in range(0, result):
+        press("right", wait=0)
+    for i in range(0, len(target)):
+        press("shift-right")
+    press("right", wait=0)
