@@ -203,7 +203,10 @@ keymap.update(
         "wipe": Key("backspace"),
         "(pad | padding ) ": ["  ", Key("left")],
         "funny": "ha ha",
-    }
+        "menubar": Key("ctrl-f2"),
+        "status menu": Key("ctrl-f8"),
+        "my doc": Key("ctrl-f3"),
+       }
 )
 
 ctx.keymap(keymap)
