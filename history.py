@@ -18,7 +18,7 @@ FONT_SIZE = 12
 BORDER_SIZE = int(FONT_SIZE / 6)
 NOTIFY = False
 LAST_COUNT = 5
-LAST_MAX = 30
+LAST_MAX = 50
 
 css_template = (
     """
