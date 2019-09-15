@@ -44,6 +44,7 @@ context.keymap(
         "get show": "git show ",
         "get status": "git status",
         "run get status": "git status\n",
+        "run get status short": "git status -s\n",
         "get stash": "git stash ",
         "run get stash": "git stash\n",
         "get stash pop": "git stash pop",
