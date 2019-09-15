@@ -6,7 +6,7 @@ alpha_alt = "air bat cap dip each far gone harp sit jury crunch look mad near od
 f_keys = {f"F {i}": f"f{i}" for i in range(1, 13)}
 # arrows are separated because 'up' has a high false positive rate
 arrows = ["left", "right", "up", "down"]
-simple_keys = ["tab", "escape", "enter", "space", "pageup", "pagedown", "end"]
+simple_keys = ["tab", "escape", "enter", "space", "pageup", "pagedown"]
 alternate_keys = {"delete": "backspace", "forward delete": "delete"}
 symbols = {
     "back tick": "`",
