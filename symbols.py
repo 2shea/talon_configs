@@ -26,6 +26,7 @@ context.keymap(
         "(dubquote | double quote)": '"',
         "triple quote": "'''",
         "(dot dot | dotdot)": "..",
+        "ellipses": "…",
         "comma and": ", ",
         "plus": "+",
         "arrow": "->",
