@@ -28,6 +28,7 @@ context.keymap(
         "get log": "git log ",
         "run get log": "git log\n",
         "get next release": "git log --oneline --no-decorate --grep 'Merge pull' ",
+        "get (author | co-author)": "git log --format='%an <%ae>' -n1 --author=",
         "run get merge": "git merge ",
         "get move": "git mv ",
         "get pull": "git pull ",
