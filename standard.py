@@ -185,7 +185,6 @@ keymap.update(
         "copy": Key("cmd-c"),
         "cut": Key("cmd-x"),
         "paste": Key("cmd-v"),
-        "flock off": Key("escape"),
         "menu help": Key("cmd-shift-?"),
         "spotlight": Key("cmd-space"),
         "(undo | under | skunks)": Key("cmd-z"),
