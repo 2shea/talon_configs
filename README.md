@@ -16,31 +16,5 @@ Follow the [Getting Started](https://talonvoice.com/docs/) section of the Talon 
 Clone this repository into `~/.talon/user`. Any files in this directory will automatically be loaded into Talon. 
 
 # Getting Started
-Each file will have a Context (e.g., "sublime", "slack"). A Context is a logical grouping of commands which can be active globally or only under certain conditions (e.g., when a specific app is in focus, when working in a file with a specific file extension, or even when a specific song is playing on spotify).
-
-All noise or voice commands for a context will be inside of a dictionary passed into the `keymap` function of the context.
-
-```
-from talon.voice import Context, Key
-
-context = Context("example", bundle="com.example")
-context.keymap({
-
-	# voice command => action
-	"say this": "talon will do this",
-
-	# generate a string
-	"get status": "git status",
-
-	# press keys using Key
-	"space": Key("space"),
-
-	# press multiple keys
-	"copy": Key("cmd-c"),
-
-	# multiple actions 
-	"args": ["()", Key("left")],
-})
-```
-
-
+# Getting Started
+Check out this blog post [Getting Started with Voice Driven Development](https://whalequench.club/blog/2019/09/03/learning-to-speak-code.html).
