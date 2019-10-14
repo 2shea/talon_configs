@@ -13,15 +13,6 @@ def engine_update(j):
 engine.register("ready", engine_update)
 
 
-def rot13(i, word, _):
-    out = ""
-    for c in word.lower():
-        if c in string.ascii_lowercase:
-            c = chr((((ord(c) - ord("a")) + 13) % 26) + ord("a"))
-        out += c
-    return out
-
-
 formatters = {
     "dunder": (True, lambda i, word, _: "__%s__" % word if i == 0 else word),
     "camel": (True, lambda i, word, _: word if i == 0 else word.capitalize()),
@@ -35,7 +26,6 @@ formatters = {
     "dubstring": (False, surround('"')),
     "string": (False, surround("'")),
     "padded": (False, surround(" ")),
-    "rot-thirteen": (False, rot13),
     "dotted": (True, lambda i, word, _: word if i == 0 else "." + word),
     "slasher": (True, lambda i, word, _: "/" + word),
 }
