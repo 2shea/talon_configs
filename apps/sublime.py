@@ -61,6 +61,7 @@ keymap = {
     "jump (down | end)": Key("cmd-down"),
     # find & replace
     "(subl | sublime) find": Key("cmd-f"),
+    "[(subl | sublime)] find all": Key("cmd-shift-f"),
     "expression": Key("alt-cmd-r"),
     "case insensitive": Key("alt-cmd-c"),
     "whole word": Key("alt-cmd-w"),

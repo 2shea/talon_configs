@@ -35,6 +35,8 @@ context.keymap(
         "run get pull": "git pull\n",
         "get push": "git push",
         "run get push": "git push\n",
+        "get push up stream": "git push -u origin HEAD",
+        "run get push up stream": "git push -u origin HEAD\n",
         "[run] get push origin": "git push origin ",
         "[run] get push master": "git push origin master",
         "get rebase": "git rebase ",

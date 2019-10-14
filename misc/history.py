@@ -8,7 +8,7 @@ from talon import app, webview
 from talon.engine import engine
 from talon_init import TALON_HOME
 from talon.voice import Context
-from .utils import optional_numerals, text_to_number
+from ..utils import optional_numerals, text_to_number
 
 context = Context("history")
 

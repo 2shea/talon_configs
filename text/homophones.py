@@ -2,7 +2,7 @@ from talon import app, clip, cron
 from talon.voice import Context, Str, press
 from talon.webview import Webview
 
-from .utils import parse_word
+from ..utils import parse_word
 import os
 
 ########################################################################

@@ -1,6 +1,6 @@
 from talon.voice import Context, Key, press
 import talon.clip as clip
-from .utils import text, parse_words, insert
+from ..utils import text, parse_words, insert
 
 FILETYPES = (".html", ".jsx", ".erb", ".py")
 

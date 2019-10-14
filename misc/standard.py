@@ -2,7 +2,7 @@ from talon.voice import Word, Context, Key, Str, press
 from talon import app, clip, ui
 from talon_init import TALON_HOME, TALON_PLUGINS, TALON_USER
 import string
-from .utils import surround, parse_words, parse_word, sentence_text, text, word
+from ..utils import surround, parse_words, parse_word, sentence_text, text, word
 from talon.engine import engine
 
 
@@ -31,10 +31,13 @@ formatters = {
     "pack": (True, lambda i, word, _: word if i == 0 else "::" + word),
     "title": (False, lambda i, word, _: word.capitalize()),
     "allcaps": (False, lambda i, word, _: word.upper()),
+    "alldown": (False, lambda i, word, _: word.lower()),
     "dubstring": (False, surround('"')),
     "string": (False, surround("'")),
     "padded": (False, surround(" ")),
     "rot-thirteen": (False, rot13),
+    "dotted": (True, lambda i, word, _: word if i == 0 else "." + word),
+    "slasher": (True, lambda i, word, _: "/" + word),
 }
 
 
