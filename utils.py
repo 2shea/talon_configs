@@ -35,9 +35,11 @@ mapping = {
 # used for auto-spacing
 punctuation = set(".,-!?")
 
+def remove_dragon_junk(word):
+    return str(word).lstrip("\\").split("\\", 1)[0]
 
 def parse_word(word):
-    word = str(word).lstrip("\\").split("\\", 1)[0]
+    word = remove_dragon_junk(word)
     word = mapping.get(word.lower(), word)
     return word
 
