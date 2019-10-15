@@ -160,8 +160,19 @@ def is_filetype(extensions=()):
     return matcher
 
 
+def preserve_clipboard(fn):
+    def wrapped_function(*args, **kwargs):
+        old = clip.get()
+        ret = fn(*args, **kwargs)
+        sleep(0.1)
+        clip.set(old)
+        return ret
+
+    return wrapped_function
+
+
+@preserve_clipboard
 def jump_to_target(target):
-    old = clip.get()
     press("cmd-left", wait=2000)
     press("cmd-shift-right", wait=2000)
     press("cmd-c", wait=2000)
@@ -169,7 +180,6 @@ def jump_to_target(target):
     line = clip.get()
     print("LINE")
     print(line)
-    clip.set(old)
     result = line.find(target)
     if result == -1:
         return
