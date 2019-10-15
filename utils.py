@@ -2,41 +2,20 @@ from talon.voice import Str, press
 import talon.clip as clip
 from .bundle_groups import FILETYPE_SENSITIVE_BUNDLES
 
-# cleans up some Dragon output from <dgndictation>
-mapping = {
-    "semicolon": ";",
-    "new-line": "\n",
-    "new-paragraph": "\n\n",
-    "furnish": "varnish",
-    "pseudo-": "sudo",
-    "apt get": "apt-get",
-    "krohn": "cron",
-    "standard out": "stdout",
-    "standard in": "stdin",
-    "standard error": "stderr",
-    "keep": "key",
-    "keeper": "key",
-    "crum": "chrome",
-    "crump": "chrome",
-    "laugh": "waf",
-    "pearl": "perl",
-    "cash": "cache",
-    "gage": "gauge",
-    "scaler": "scalar",
-    "warren": "warn",
-    "worn": "warn",
-    "carl": "curl",
-    "bcl": "vcl",
-    "tubal": "tuple",
-    "vastly": "fastly",
-    "talent": "talon",
-}
+# overrides are used as a last resort to override the output. Some uses:
+# - frequently misheard words
+# - force homophone preference (alternate homophones can be accessed with homophones command)
+
+# To add an override, add the word to override as the key and desired replacement as value in overrides.json
+mapping = json.load(resource.open("overrides.json"))
 
 # used for auto-spacing
 punctuation = set(".,-!?")
 
+
 def remove_dragon_junk(word):
     return str(word).lstrip("\\").split("\\", 1)[0]
+
 
 def parse_word(word):
     word = remove_dragon_junk(word)
@@ -90,6 +69,7 @@ def surround(by):
 
     return func
 
+
 # support for parsing numbers as command postfix
 def numeral_map():
     numeral_map = dict((str(n), n) for n in range(0, 20))
@@ -98,11 +78,14 @@ def numeral_map():
     numeral_map["oh"] = 0  # synonym for zero
     return numeral_map
 
+
 def numerals():
     return " (" + " | ".join(sorted(numeral_map().keys())) + ")+"
 
+
 def optional_numerals():
     return " (" + " | ".join(sorted(numeral_map().keys())) + ")*"
+
 
 def text_to_number(m):
     tmp = [str(s).lower() for s in m._words]
@@ -175,6 +158,7 @@ def is_filetype(extensions=()):
         return True
 
     return matcher
+
 
 def jump_to_target(target):
     old = clip.get()
