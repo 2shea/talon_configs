@@ -79,7 +79,7 @@ keymap.update(
         "tip float": "float ",
         "tip double": "double ",
         "args": ["()", Key("left")],
-        "[inside] (index | array)": ["[]", Key("left")],
+        "(inside | in) (index | array)": ["[]", Key("left")],
         "block": ["{}", Key("left enter enter up tab")],
         "empty array": "[]",
         "comment see": "// ",
