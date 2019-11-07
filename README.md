@@ -1,3 +1,5 @@
+# ***You may prefer this [Starter Pack](https://github.com/2shea/talon_starter_pack), which will have the same core modules as this repository, but will be less opinionated and include fewer of my personal customizations***
+
 # Talon Modules for use with [Talon](https://talonvoice.com/)
 
 These modules contain voice and noise commands to be used with Talon, a hands-free input replacement. Some modules are meant to be used with the Tobii 4C eye tracker, but it is not required for most commands.
