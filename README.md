@@ -1,3 +1,5 @@
+# ***This repository is compatible with the public release macOS (10.11-10.14). If you are using the private beta, check out [knausj_talon](https://github.com/knausj85/knausj_talon).***
+
 # ***You may prefer this [Starter Pack](https://github.com/2shea/talon_starter_pack), which will have the same core modules as this repository, but will be less opinionated and include fewer of my personal customizations***
 
 # Talon Modules for use with [Talon](https://talonvoice.com/)
